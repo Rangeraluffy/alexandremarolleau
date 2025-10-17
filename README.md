@@ -10,7 +10,7 @@
 
 **Portfolio moderne et performant avec animations fluides, mode dark/light et CI/CD automatisé vers OVH**
 
-[🌐 Démo en ligne](https://ton-domaine.com) • [📖 Documentation](#documentation) • [🐛 Signaler un bug](https://github.com/username/portfolio/issues)
+[🌐 Démo en ligne](https://ton-domaine.com) • [📖 Documentation](#documentation) • [🐛 Signaler un bug](https://github.com/Rangeraluffy/portfolio/issues)
 
 </div>
 
@@ -120,8 +120,8 @@ Avant de commencer, assure-toi d'avoir installé :
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/username/portfolio.git
-cd portfolio
+git clone https://github.com/Rangeraluffy/alexandremarolleau.git
+cd alexandremarolleau
 
 # 2. Installer les dépendances
 npm install
@@ -486,7 +486,7 @@ in the Software without restriction...
 
 **Alexandre** - Développeur Full Stack
 
-- 🐱 GitHub : [@Rangeraluffy](https://github.com/ton-username)
+- 🐱 GitHub : [@Rangeraluffy](https://github.com/Rangeraluffy)
 
 ---
 
