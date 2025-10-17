@@ -1,5 +1,103 @@
-# Logs
-logs
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnp
+.pnp.js
+
+# ============================================
+# BUILD OUTPUT
+# ============================================
+dist/
+dist-ssr/
+build/
+.cache/
+*.local
+
+# ============================================
+# ENVIRONMENT VARIABLES (SENSIBLE)
+# ============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Backup env files (au cas où)
+*.env.backup
+.env.*.backup
+
+# ============================================
+# EDITOR & IDE
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains IDEs (WebStorm, PhpStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================
+# OPERATING SYSTEM
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ============================================
+# LOGS
+# ============================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +105,110 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ============================================
+# TESTING
+# ============================================
+coverage/
+*.lcov
+.nyc_output/
+.grunt
+lib-cov
+.coverage
+.coverage.*
+junit.xml
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
+# ============================================
+# TEMPORARY FILES
+# ============================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.cache
+
+# ============================================
+# SECRETS & CREDENTIALS (SENSIBLE)
+# ============================================
+# Fichiers de configuration sensibles
+config.local.js
+secrets.json
+credentials.json
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+
+# Clés SSH
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.ppk
+
+# FTP credentials
+.ftpconfig
+.ftppass
+ftpsync.settings
+
+# ============================================
+# DEPENDENCIES LOCK FILES (optionnel)
+# ============================================
+# Décommente si tu veux ignorer les lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ============================================
+# MISC
+# ============================================
+.eslintcache
+.stylelintcache
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Sentry
+.sentryclirc
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ============================================
+# BACKUP & ARCHIVES
+# ============================================
+*.backup
+*.bak
+*.old
+*.orig
+*.zip
+*.tar.gz
+*.rar
+
+# ============================================
+# DEPLOYMENT (sensible)
+# ============================================
+# Ne JAMAIS commit ces fichiers
+deploy.sh
+deploy-config.json
+.deployment
+.vercel
+.netlify
+
+# ============================================
+# DATABASE (si applicable)
+# ============================================
+*.sqlite
+*.sqlite3
+*.db
+
+# ============================================
+# CUSTOM PROJECT FILES
+# ============================================
+# Ajoute ici des fichiers spécifiques à ton projet
+# Exemple :
+# /notes-perso.md
+# /todo-local.txt
