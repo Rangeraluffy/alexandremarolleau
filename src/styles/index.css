@@ -1,0 +1,18 @@
+/* Import des fonts personnalisées */
+@import './fonts.css';
+
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Oakes Grotesk', system-ui, -apple-system, sans-serif;
+}

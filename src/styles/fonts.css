@@ -1,0 +1,109 @@
+/* Oakes Grotesk - Regular */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-Regular.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-Regular.woff') format('woff'),
+         url('/fonts/OakesGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Light */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-Light.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-Light.woff') format('woff'),
+         url('/fonts/OakesGrotesk-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Medium */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-Medium.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-Medium.woff') format('woff'),
+         url('/fonts/OakesGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - SemiBold */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-SemiBold.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-SemiBold.woff') format('woff'),
+         url('/fonts/OakesGrotesk-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Bold */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-Bold.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-Bold.woff') format('woff'),
+         url('/fonts/OakesGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Italic */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-Italic.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-Italic.woff') format('woff'),
+         url('/fonts/OakesGrotesk-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Light Italic */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-LightItalic.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-LightItalic.woff') format('woff'),
+         url('/fonts/OakesGrotesk-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Medium Italic */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-MediumItalic.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-MediumItalic.woff') format('woff'),
+         url('/fonts/OakesGrotesk-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - SemiBold Italic */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-SemiBoldItalic.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-SemiBoldItalic.woff') format('woff'),
+         url('/fonts/OakesGrotesk-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Oakes Grotesk - Bold Italic */
+@font-face {
+    font-family: 'Oakes Grotesk';
+    src: url('/fonts/OakesGrotesk-BoldItalic.woff2') format('woff2'),
+         url('/fonts/OakesGrotesk-BoldItalic.woff') format('woff'),
+         url('/fonts/OakesGrotesk-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
