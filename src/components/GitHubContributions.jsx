@@ -15,25 +15,55 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
 
   // Injecter le CSS pour les couleurs
   useEffect(() => {
-    // Créer une balise style si elle n'existe pas déjà
+    // Créer une balise style si elle n'existe pas déjà 
     let styleTag = document.getElementById('github-contribution-styles');
     if (!styleTag) {
       styleTag = document.createElement('style');
       styleTag.id = 'github-contribution-styles';
       styleTag.innerHTML = `
-        /* Mode clair */
-        .contribution-level-0 { background-color: #ebedf0; }
-        .contribution-level-1 { background-color: #9be9a8; }
-        .contribution-level-2 { background-color: #40c463; }
-        .contribution-level-3 { background-color: #30a14e; }
-        .contribution-level-4 { background-color: #216e39; }
+        /* Par défaut, toutes les cases sont grises */
+        .contribution-cell {
+          background-color: #ebedf0;
+          transition: background-color 0.3s ease;
+        }
+        
+        .dark .contribution-cell {
+          background-color: #2d333b;
+        }
 
-        /* Mode sombre */
-        .dark .contribution-level-0 { background-color: #2d333b; }
-        .dark .contribution-level-1 { background-color: #0e4429; }
-        .dark .contribution-level-2 { background-color: #006d32; }
-        .dark .contribution-level-3 { background-color: #26a641; }
-        .dark .contribution-level-4 { background-color: #39d353; }
+        /* Quand animées, les cases prennent leur vraie couleur */
+        .contribution-cell.is-animated.contribution-level-0 { 
+          background-color: #ebedf0; 
+        }
+        .contribution-cell.is-animated.contribution-level-1 { 
+          background-color: #9be9a8; 
+        }
+        .contribution-cell.is-animated.contribution-level-2 { 
+          background-color: #40c463; 
+        }
+        .contribution-cell.is-animated.contribution-level-3 { 
+          background-color: #30a14e; 
+        }
+        .contribution-cell.is-animated.contribution-level-4 { 
+          background-color: #216e39; 
+        }
+
+        /* Mode sombre - animées */
+        .dark .contribution-cell.is-animated.contribution-level-0 { 
+          background-color: #2d333b; 
+        }
+        .dark .contribution-cell.is-animated.contribution-level-1 { 
+          background-color: #0e4429; 
+        }
+        .dark .contribution-cell.is-animated.contribution-level-2 { 
+          background-color: #006d32; 
+        }
+        .dark .contribution-cell.is-animated.contribution-level-3 { 
+          background-color: #26a641; 
+        }
+        .dark .contribution-cell.is-animated.contribution-level-4 { 
+          background-color: #39d353; 
+        }
 
         /* Légende - mode clair */
         .legend-level-0 { background-color: #ebedf0; }
@@ -84,6 +114,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
   useEffect(() => {
     if (!containerRef.current || loading) return;
 
+    // Animation d'apparition du conteneur
     gsap.fromTo(
       containerRef.current,
       { opacity: 0, y: 40 },
@@ -94,11 +125,37 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
+          start: 'top 100%',
+          once: true, 
         },
       }
     );
-  }, [loading]);
+
+    // Animation de transformation des cases grises en vertes
+    const cells = gridRef.current?.querySelectorAll('.contribution-cell');
+    if (cells && cells.length > 0) {
+      // Créer une animation pour chaque cellule individuellement
+      cells.forEach((cell, index) => {
+        gsap.to(cell, {
+          duration: 0.01,
+          delay: index * 0.008, 
+          ease: 'none',
+          onStart: function() {
+            cell.classList.add('is-animated');
+          },
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 70%',
+            once: true, // Animation se déclenche une seule fois
+          },
+        });
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [loading, contributions]);
 
   const getLevelColor = (level) => {
     // Couleurs officielles GitHub (mode clair et sombre)
@@ -212,7 +269,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
       <div className="bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-md p-4">
         <div 
           ref={gridRef}
-          className=" w-full"
+          className="w-full"
         >
           <div className="flex gap-1 w-full">
             {/* Labels des jours de la semaine */}
@@ -271,7 +328,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
                       return (
                         <div
                           key={date}
-                          className={`contribution-cell w-full aspect-square rounded-sm transition-all duration-200 hover:ring-2 hover:ring-gray-400 dark:hover:ring-gray-500 cursor-pointer group relative contribution-level-${data.level}`}
+                          className={`contribution-cell w-full aspect-square rounded-sm transition-all duration-200 hover:ring-2 hover:ring-gray-400 dark:hover:ring-gray-500 cursor-pointer group relative contribution-level-${data?.level || 0}`}
                           style={{
                             minWidth: '11px',
                             minHeight: '11px'
