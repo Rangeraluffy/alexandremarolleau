@@ -121,7 +121,7 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative min-h-screen bg-white dark:bg-[#1C1D1D] transition-colors duration-300 overflow-hidden"
+      className="relative min-h-screen bg-white dark:bg-[#0d1117] transition-colors duration-300 overflow-hidden"
     >
       {/* Première div - Titre "About Me" qui zoom */}
       <div
@@ -156,14 +156,14 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
             <div 
               ref={(el) => (statsRef.current[0] = el)}
-              className="bg-gray-100 dark:bg-[#2a2b2b] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
+              className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
               <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">5+</h3>
               <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Années d'expérience</p>
             </div>
             <div 
               ref={(el) => (statsRef.current[1] = el)}
-              className="bg-gray-100 dark:bg-[#2a2b2b] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
+              className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
               <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">50+</h3>
               <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Projets réalisés</p>
@@ -178,7 +178,7 @@ const About = () => {
                 <div
                   key={item.title}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="bg-gray-100 dark:bg-[#2a2b2b] p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
+                  className="bg-gray-100 dark:bg-[#0d1117] p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
                 >
                   <Icon className="text-gray-900 dark:text-white mb-3 transition-colors duration-300" size={32} />
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-lg transition-colors duration-300">

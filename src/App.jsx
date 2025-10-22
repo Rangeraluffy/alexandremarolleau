@@ -62,7 +62,7 @@ function App() {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative bg-white dark:bg-[#1C1D1D] overflow-hidden pt-20 transition-colors duration-300">
+      <section className="min-h-screen flex items-center justify-center relative bg-white dark:bg-[#0d1117] overflow-hidden pt-20 transition-colors duration-300">
         <div className="container mx-auto px-4 text-center">
           <div className="signature-logo">
             <img

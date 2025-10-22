@@ -163,7 +163,7 @@ const Works = () => {
     <section 
       id="works" 
       ref={workWrapRef}
-      className="work_wrap relative bg-white dark:bg-[#1C1D1D]"
+      className="work_wrap relative bg-white dark:bg-[#0d1117]"
     >
       {/* Container des triggers - crée l'espace de scroll */}
       <div className="relative">

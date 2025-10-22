@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50">
-      <nav className="container mx-auto px-6 py-4 bg-white dark:bg-[#2a2b2b] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg transition-colors duration-300">
+      <nav className="container mx-auto px-6 py-4 bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg transition-colors duration-300">
         <div className="flex items-center justify-between">
           {/* Logo principal */}
           <a href="#" className="flex items-center">
