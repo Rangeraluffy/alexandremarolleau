@@ -17,33 +17,51 @@ const Header = () => {
           </a>
 
           {/* Navigation */}
-          <div className="flex space-x-8 items-center">
+               <div className="flex space-x-8 items-center">
             <a 
               href="#about" 
-              className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition font-medium"
+              className="relative overflow-hidden group font-medium"
             >
-              ABOUT
+              <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
+                ABOUT
+              </span>
+              <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                ABOUT
+              </span>
             </a>
             <a 
               href="#works" 
-              className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition font-medium"
+              className="relative overflow-hidden group font-medium"
             >
-              WORKS
+              <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
+                WORKS
+              </span>
+              <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                WORKS
+              </span>
             </a>
             <a 
               href="#skills" 
-              className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition font-medium"
+              className="relative overflow-hidden group font-medium"
             >
-              SKILLS
+              <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
+                SKILLS
+              </span>
+              <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                SKILLS
+              </span>
             </a>
             <a 
               href="#contact" 
-              className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition font-medium"
+              className="relative overflow-hidden group font-medium"
             >
-              CONTACT
+              <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
+                CONTACT
+              </span>
+              <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                CONTACT
+              </span>
             </a>
-
-  
           </div>
                     {/* Toggle Dark/Light avec icône lune */}
             <button

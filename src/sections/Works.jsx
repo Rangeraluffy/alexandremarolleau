@@ -13,8 +13,8 @@ const Works = () => {
     {
       id: 1,
       title: 'BUDJEO',
-      category: 'Application mobile',
-      stack: 'Flutter',
+      category: 'Website',
+      stack: 'Astro',
       domain: 'Financial',
       image: '/assets/budjeo-mockup.png',
       imageBlur: '/assets/budjeo-mockup.png',
@@ -23,7 +23,7 @@ const Works = () => {
     },
     {
       id: 2,
-      title: 'LUNA',
+      title: 'Silvianna',
       category: 'Application mobile',
       stack: 'Flutter',
       domain: 'Financial',
@@ -171,7 +171,7 @@ const Works = () => {
                 </div>
 
                 {/* Colonne 2 : Contenu texte (colonnes 9-12) */}
-                <div className="work_column-2 col-span-12 md:col-start-9 md:col-span-4 flex flex-col justify-end items-stretch h-full self-end">
+                <div className="work_column-2 col-span-12 md:col-start-9 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end">
                   <div className="work_content flex flex-col justify-between items-start w-full h-1/2">
                     
                     {/* Titre */}
@@ -194,14 +194,16 @@ const Works = () => {
                         <div className="link_text absolute top-0 left-0 text-white text-5xl md:text-7xl font-bold leading-none translate-y-full transition-transform group-hover:translate-y-0">
                           {project.title}
                         </div>
+                    
                       </a>
+                          <div className="text-white/80 text-3xl ">{project.category}</div>
                     </div>
 
                     {/* Services & CTA */}
                     <div className="work_services_wrap grid gap-4">
                       <div className="work_services">
                         <div className="flex flex-col gap-2">
-                          <div className="text-white/80 text-sm">{project.category}</div>
+
                           <div className="text-white/80 text-sm">{project.stack}</div>
                           <div className="text-white/80 text-sm">{project.domain}</div>
                         </div>
