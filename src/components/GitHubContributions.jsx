@@ -114,8 +114,10 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
   useEffect(() => {
     if (!containerRef.current || loading) return;
 
+    const triggers = [];
+
     // Animation d'apparition du conteneur
-    gsap.fromTo(
+    const containerAnimation = gsap.fromTo(
       containerRef.current,
       { opacity: 0, y: 40 },
       {
@@ -125,20 +127,23 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 100%',
-          once: true, 
+          start: 'top 80%',
+          once: true, // Se déclenche une seule fois
         },
       }
     );
+    if (containerAnimation.scrollTrigger) {
+      triggers.push(containerAnimation.scrollTrigger);
+    }
 
     // Animation de transformation des cases grises en vertes
     const cells = gridRef.current?.querySelectorAll('.contribution-cell');
     if (cells && cells.length > 0) {
       // Créer une animation pour chaque cellule individuellement
       cells.forEach((cell, index) => {
-        gsap.to(cell, {
+        const cellAnimation = gsap.to(cell, {
           duration: 0.01,
-          delay: index * 0.008, 
+          delay: index * 0.008, // 8ms entre chaque cellule
           ease: 'none',
           onStart: function() {
             cell.classList.add('is-animated');
@@ -149,11 +154,15 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
             once: true, // Animation se déclenche une seule fois
           },
         });
+        if (cellAnimation.scrollTrigger) {
+          triggers.push(cellAnimation.scrollTrigger);
+        }
       });
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Ne tuer que les ScrollTriggers créés par ce composant
+      triggers.forEach(trigger => trigger.kill());
     };
   }, [loading, contributions]);
 
