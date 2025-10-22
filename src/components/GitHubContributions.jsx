@@ -53,7 +53,8 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
     }
 
     return () => {
-
+      // Cleanup optionnel si le composant est démonté
+      // styleTag?.remove();
     };
   }, []);
 
@@ -127,9 +128,11 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
   const getWeeksData = () => {
     const weeks = [];
     const dates = Array.from(contributions.keys()).sort();
-
+    
+    // Créer des semaines de 7 jours
     for (let i = 0; i < dates.length; i += 7) {
       const week = dates.slice(i, i + 7);
+      // Compléter la première semaine si nécessaire
       if (i === 0 && week.length < 7) {
         const firstDay = new Date(week[0]);
         const dayOfWeek = firstDay.getDay();
@@ -189,7 +192,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
             href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm hover:underline dark:text-white flex items-center gap-1"
+            className="text-sm dark:text-white hover:underline flex items-center gap-1"
           >
             View on GitHub
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
@@ -209,7 +212,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
       <div className="bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-md p-4">
         <div 
           ref={gridRef}
-          className="w-full"
+          className=" w-full"
         >
           <div className="flex gap-1 w-full">
             {/* Labels des jours de la semaine */}
@@ -226,19 +229,24 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
             {/* Grille de contributions */}
             <div className="flex flex-col flex-1 min-w-0">
               {/* Labels des mois */}
-              <div className="flex mb-1 h-4">
-                {monthLabels.map((month, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs text-gray-600 dark:text-gray-400"
-                    style={{ 
-                      marginLeft: idx === 0 ? 0 : '0px',
-                      width: '65px'
-                    }}
-                  >
-                    {month.name}
-                  </span>
-                ))}
+              <div className="flex mb-1 h-4 w-full">
+                {weeks.map((week, weekIndex) => {
+                  // Récupérer le premier jour non-null de la semaine
+                  const firstDate = week.find(d => d !== null);
+                  if (!firstDate) return <div key={weekIndex} className="flex-1" />;
+                  
+                  const date = new Date(firstDate);
+                  const monthName = date.toLocaleDateString('en-US', { month: 'short' });
+                  
+                  // Afficher le mois seulement si c'est le premier de ce mois OU la première semaine
+                  const isFirstOfMonth = date.getDate() <= 7 || weekIndex === 0;
+                  
+                  return (
+                    <div key={weekIndex} className="flex-1 text-xs text-gray-600 dark:text-gray-400">
+                      {isFirstOfMonth ? monthName : ''}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Grille des contributions */}
