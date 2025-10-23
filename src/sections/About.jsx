@@ -37,13 +37,13 @@ const About = () => {
 
     if (!section || !titleWrap || !contentWrap) return;
 
-    // Timeline principale du zoom
+    // Timeline principale du zoom avec pin prolongé
     const mainTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
+        end: '+=150%', // Prolonger le pin pour avoir plus de temps pour l'explosion
+        scrub: 0,
         pin: true,
         anticipatePin: 1,
       },
@@ -56,13 +56,13 @@ const About = () => {
         opacity: 0,
         ease: 'power2.inOut',
       }, 0)
-      // Ajoute un effet de mix-blend pour voir à travers pendant le zoom
+      // Ajoute un effet de mix-blend pour voir Ã  travers pendant le zoom
       .to(titleWrap.querySelector('h2'), {
         mixBlendMode: 'difference',
         duration: 0.3,
       }, 0);
 
-    // Animation du contenu qui apparaît
+    // Animation du contenu qui apparaît (15% de la timeline)
     mainTimeline.fromTo(contentWrap, 
       {
         opacity: 0,
@@ -73,10 +73,10 @@ const About = () => {
         scale: 1,
         ease: 'power2.out',
       }, 
-      0.3
+      0.15
     );
 
-    // Animation des statistiques - apparaissent avec le contenu
+    // Animation des statistiques - apparaissent avec le contenu (25% de la timeline)
     if (statsRef.current.length > 0) {
       mainTimeline.fromTo(statsRef.current,
         {
@@ -86,15 +86,15 @@ const About = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.3,
-          stagger: 0.1,
+          duration: 0.15,
+          stagger: 0.05,
           ease: 'power2.out',
         },
-        0.5
+        0.25
       );
     }
 
-    // Animation des cartes - apparaissent après les stats
+    // Animation des cartes - apparaissent après les stats (35% de la timeline)
     if (cardsRef.current.length > 0) {
       mainTimeline.fromTo(cardsRef.current,
         {
@@ -104,12 +104,51 @@ const About = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.3,
-          stagger: 0.1,
+          duration: 0.15,
+          stagger: 0.05,
           ease: 'power2.out',
         },
-        0.7
+        0.35
       );
+
+      // PAUSE : Les cartes restent visibles de 50% à 70% de la timeline
+      mainTimeline.to({}, { duration: 0.2 }, 0.5);
+
+      // Animation d'explosion des cartes (70% de la timeline)
+      mainTimeline.to(cardsRef.current, {
+        x: (index) => {
+          // Explosion vers la gauche pour la première carte, vers la droite pour la dernière, au milieu pour celle du centre
+          const direction = index === 0 ? -1 : index === 2 ? 1 : 0;
+          return direction * gsap.utils.random(400, 600);
+        },
+        y: (index) => {
+          // Explosion vers le haut avec variation aléatoire
+          return gsap.utils.random(-500, -300);
+        },
+        rotation: () => gsap.utils.random(-60, 60), // Rotation aléatoire plus prononcée
+        opacity: 0,
+        scale: 0.3,
+        duration: 0.2,
+        stagger: 0.05, // Explosion en cascade
+        ease: 'power2.in',
+      }, 0.7);
+
+      // Faire aussi exploser les stats (un peu après les cartes)
+      if (statsRef.current.length > 0) {
+        mainTimeline.to(statsRef.current, {
+          x: (index) => {
+            const direction = index === 0 ? -1 : 1;
+            return direction * gsap.utils.random(400, 600);
+          },
+          y: () => gsap.utils.random(-500, -300),
+          rotation: () => gsap.utils.random(-60, 60),
+          opacity: 0,
+          scale: 0.3,
+          duration: 0.15,
+          stagger: 0.05,
+          ease: 'power2.in',
+        }, 0.75);
+      }
     }
 
     return () => {
@@ -123,7 +162,7 @@ const About = () => {
       ref={sectionRef}
       className="relative min-h-screen bg-white dark:bg-[#0d1117] transition-colors duration-300 overflow-hidden"
     >
-      {/* Première div - Titre "About Me" qui zoom */}
+      {/* PremiÃ¨re div - Titre "About Me" qui zoom */}
       <div
         ref={titleWrapRef}
         className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
@@ -135,22 +174,13 @@ const About = () => {
         </div>
       </div>
 
-      {/* Deuxième div - Contenu qui apparaît */}
+      {/* DeuxiÃ¨me div - Contenu qui apparaÃ®t */}
       <div
         ref={contentWrapRef}
         className="absolute inset-0 flex items-center justify-center py-20 opacity-0 overflow-y-auto"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6 transition-colors duration-300">
-              Développeur Full Stack passionné, je transforme des idées en applications web performantes et élégantes.
-              Mon expertise couvre l'ensemble du stack moderne, du frontend avec React jusqu'au backend avec Node.js.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed transition-colors duration-300">
-              J'accorde une importance particulière à l'expérience utilisateur, la performance et la maintenabilité du code.
-              Chaque projet est une opportunité d'apprendre et de repousser les limites du web.
-            </p>
-          </div>
+     
 
           {/* Statistiques - 2 colonnes de 50% chacune */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
