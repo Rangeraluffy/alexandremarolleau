@@ -1,7 +1,19 @@
 import { useTheme } from '../../context/ThemeContext';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleThemeToggle = () => {
+    setIsTransitioning(true);
+    toggleTheme();
+    
+    // Réinitialiser l'animation après la transition
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+  };
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50">
@@ -12,12 +24,12 @@ const Header = () => {
             <img
              src={theme === 'dark' ? '/assets/logo-am-small-white.svg' : '/assets/logo-am-small.svg'}
               alt="Alexandre Marolleau"
-              className="h-8 w-auto"
+              className="h-8 w-auto transition-opacity duration-300"
             />
           </a>
 
           {/* Navigation */}
-               <div className="flex space-x-8 items-center">
+          <div className="flex space-x-8 items-center">
             <a 
               href="#about" 
               className="relative overflow-hidden group font-medium"
@@ -63,18 +75,35 @@ const Header = () => {
               </span>
             </a>
           </div>
-                    {/* Toggle Dark/Light avec icône lune */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg  transition-all duration-300"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              <img
-                src={theme === 'dark' ? '/assets/moon-white.svg' : '/assets/moon-dark.svg'}
-                alt="Toggle theme"
-                className="h-6 w-6 transition-transform duration-300 hover:rotate-12"
-              />
-            </button>
+          
+          {/* Toggle Dark/Light avec transition fluide */}
+          <button
+            onClick={handleThemeToggle}
+            className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {/* Icône Lune */}
+            <img
+              src="/assets/moon-dark.svg"
+              alt="Dark mode"
+              className={`h-6 w-6 absolute inset-0 m-auto transition-all duration-500 ${
+                theme === 'light' 
+                  ? 'opacity-100 rotate-0 scale-100' 
+                  : 'opacity-0 -rotate-90 scale-50'
+              } ${isTransitioning ? 'hover:rotate-12' : ''}`}
+            />
+            
+            {/* Icône Soleil */}
+            <img
+              src="/assets/sun.svg"
+              alt="Light mode"
+              className={`h-6 w-6 transition-all duration-500 ${
+                theme === 'dark' 
+                  ? 'opacity-100 rotate-0 scale-100' 
+                  : 'opacity-0 rotate-90 scale-50'
+              } ${isTransitioning ? 'hover:rotate-12' : ''}`}
+            />
+          </button>
         </div>
       </nav>
     </header>

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
   const sectionRef = useRef(null);
   const titleWrapRef = useRef(null);
+  const textDescRef = useRef(null);
   const contentWrapRef = useRef(null);
   const cardsRef = useRef([]);
   const statsRef = useRef([]);
@@ -33,50 +34,80 @@ const About = () => {
   useEffect(() => {
     const section = sectionRef.current;
     const titleWrap = titleWrapRef.current;
+    const textDesc = textDescRef.current;
     const contentWrap = contentWrapRef.current;
 
-    if (!section || !titleWrap || !contentWrap) return;
+    if (!section || !titleWrap || !textDesc || !contentWrap) return;
 
     // Timeline principale du zoom avec pin prolongé
     const mainTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: '+=150%', // Prolonger le pin pour avoir plus de temps pour l'explosion
-        scrub: 0,
+        end: '+=200%', // Réduit car on n'a plus l'explosion
+        scrub: true, // true = strictement lié au scroll, pas de délai
         pin: true,
         anticipatePin: 1,
       },
     });
 
-    // Animation du titre qui zoom out avec effet de transparence
+    // Animation du titre qui zoom out avec effet de transparence (0% - 20%)
     mainTimeline
       .to(titleWrap, {
         scale: 20,
         opacity: 0,
         ease: 'power2.inOut',
       }, 0)
-      // Ajoute un effet de mix-blend pour voir Ã  travers pendant le zoom
       .to(titleWrap.querySelector('h2'), {
         mixBlendMode: 'difference',
         duration: 0.3,
       }, 0);
 
-    // Animation du contenu qui apparaît (15% de la timeline)
-    mainTimeline.fromTo(contentWrap, 
+    // PAUSE : S'assurer que le titre a complètement disparu (20% - 25%)
+    mainTimeline.to({}, { duration: 0.05 }, 0.2);
+
+    // Animation de la section texte/description qui apparaît (25% - 40%)
+    mainTimeline.fromTo(textDesc, 
       {
         opacity: 0,
-        scale: 0.8,
+        y: '50vh', // Réduit de 100vh à 50vh pour moins de distance
       },
       {
         opacity: 1,
-        scale: 1,
-        ease: 'power2.out',
+        y: 0, // Se centre à l'écran
+        ease: 'power1.out', // Changé pour un easing plus doux
+        duration: 0.15, // Durée explicite plus longue
       }, 
-      0.15
+      0.25 // Commence à 25% au lieu de 15%
     );
 
-    // Animation des statistiques - apparaissent avec le contenu (25% de la timeline)
+    // PAUSE : Le texte reste visible et centré (40% - 50%)
+    mainTimeline.to({}, { duration: 0.1 }, 0.4);
+
+    // Le texte remonte progressivement et sort par le haut (50% - 65%)
+    mainTimeline.to(textDesc, {
+      y: '-50vh', // Réduit aussi pour la sortie
+      opacity: 0,
+      ease: 'power1.in', // Easing plus doux
+      duration: 0.15,
+    }, 0.5);
+
+    // Les cartes arrivent par le bas pendant que le texte monte (55% - 75%)
+    mainTimeline.fromTo(contentWrap, 
+      {
+        opacity: 0,
+        y: '50vh', // Réduit également
+      },
+      {
+        opacity: 1,
+        y: 0, // Se centrent à l'écran
+        ease: 'power1.out',
+        duration: 0.2,
+      }, 
+      0.55 // Commence à 55% - léger overlap avec la sortie du texte
+    );
+
+    // Animation des statistiques (70% - 75%)
     if (statsRef.current.length > 0) {
       mainTimeline.fromTo(statsRef.current,
         {
@@ -86,15 +117,15 @@ const About = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.15,
+          duration: 0.1,
           stagger: 0.05,
           ease: 'power2.out',
         },
-        0.25
+        0.7
       );
     }
 
-    // Animation des cartes - apparaissent après les stats (35% de la timeline)
+    // Animation des cartes (75% - 80%)
     if (cardsRef.current.length > 0) {
       mainTimeline.fromTo(cardsRef.current,
         {
@@ -104,51 +135,15 @@ const About = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.15,
+          duration: 0.1,
           stagger: 0.05,
           ease: 'power2.out',
         },
-        0.35
+        0.75
       );
 
-      // PAUSE : Les cartes restent visibles de 50% à 70% de la timeline
-      mainTimeline.to({}, { duration: 0.2 }, 0.5);
-
-      // Animation d'explosion des cartes (70% de la timeline)
-      mainTimeline.to(cardsRef.current, {
-        x: (index) => {
-          // Explosion vers la gauche pour la première carte, vers la droite pour la dernière, au milieu pour celle du centre
-          const direction = index === 0 ? -1 : index === 2 ? 1 : 0;
-          return direction * gsap.utils.random(400, 600);
-        },
-        y: (index) => {
-          // Explosion vers le haut avec variation aléatoire
-          return gsap.utils.random(-500, -300);
-        },
-        rotation: () => gsap.utils.random(-60, 60), // Rotation aléatoire plus prononcée
-        opacity: 0,
-        scale: 0.3,
-        duration: 0.2,
-        stagger: 0.05, // Explosion en cascade
-        ease: 'power2.in',
-      }, 0.7);
-
-      // Faire aussi exploser les stats (un peu après les cartes)
-      if (statsRef.current.length > 0) {
-        mainTimeline.to(statsRef.current, {
-          x: (index) => {
-            const direction = index === 0 ? -1 : 1;
-            return direction * gsap.utils.random(400, 600);
-          },
-          y: () => gsap.utils.random(-500, -300),
-          rotation: () => gsap.utils.random(-60, 60),
-          opacity: 0,
-          scale: 0.3,
-          duration: 0.15,
-          stagger: 0.05,
-          ease: 'power2.in',
-        }, 0.75);
-      }
+      // Les cartes restent visibles jusqu'à la fin (80% - 100%)
+      mainTimeline.to({}, { duration: 0.2 }, 0.8);
     }
 
     return () => {
@@ -162,7 +157,7 @@ const About = () => {
       ref={sectionRef}
       className="relative min-h-screen bg-white dark:bg-[#0d1117] transition-colors duration-300 overflow-hidden"
     >
-      {/* PremiÃ¨re div - Titre "About Me" qui zoom */}
+      {/* Première div - Titre "About Me" qui zoom */}
       <div
         ref={titleWrapRef}
         className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
@@ -174,14 +169,29 @@ const About = () => {
         </div>
       </div>
 
-      {/* DeuxiÃ¨me div - Contenu qui apparaÃ®t */}
+      {/* Nouvelle section - Texte/Description */}
+      <div
+        ref={textDescRef}
+        className="absolute inset-0 flex items-center justify-center opacity-0 z-30 pointer-events-none px-6"
+      >
+        <div className="max-w-4xl text-center">
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">
+            Développeur Full Stack Passionné
+          </h3>
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
+            Avec plus de 5 ans d'expérience dans le développement web, je crée des expériences numériques 
+            modernes et performantes. Spécialisé dans les technologies React, Node.js et les architectures cloud, 
+            je transforme vos idées en applications web robustes et scalables.
+          </p>
+        </div>
+      </div>
+
+      {/* Deuxième div - Contenu qui apparaît (stats + cartes) */}
       <div
         ref={contentWrapRef}
-        className="absolute inset-0 flex items-center justify-center py-20 opacity-0 overflow-y-auto"
+        className="absolute inset-0 flex items-center justify-center py-20 opacity-0 overflow-hidden z-20"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
-     
-
           {/* Statistiques - 2 colonnes de 50% chacune */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
             <div 
