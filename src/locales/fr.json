@@ -1,0 +1,118 @@
+{
+  "header": {
+    "about": "À PROPOS",
+    "works": "PROJETS",
+    "skills": "COMPÉTENCES",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "scrollDown": "Défiler vers le contenu"
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "Développeur Full Stack Passionné",
+    "description": "Avec plus de 5 ans d'expérience dans le développement web, je crée des expériences numériques modernes et performantes. Spécialisé dans les technologies React, Node.js et les architectures cloud, je transforme vos idées en applications web robustes et scalables.",
+    "stats": {
+      "experience": "Années d'expérience",
+      "projects": "Projets réalisés"
+    },
+    "highlights": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Vue, Tailwind CSS"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Python, APIs REST"
+      },
+      "database": {
+        "title": "Base de données",
+        "description": "MongoDB, PostgreSQL, Redis"
+      }
+    }
+  },
+  "works": {
+    "viewProject": "Voir le projet",
+    "stack": "Stack",
+    "domain": "Domaine",
+    "role": "Rôle",
+    "features": "Features",
+    "projects": {
+      "stayCourchevel": {
+        "category": "Site de location immobilière de luxe",
+        "domain": "Immobilier de Luxe",
+        "role": "Développeur Front-End",
+        "description": "Participation au développement de l'interface utilisateur et à la mise en place d'animations dynamiques sur un site vitrine haut de gamme. Travail d'intégration soigné pour assurer cohérence visuelle et performance sur tous les supports."
+      },
+      "budjeoWeb": {
+        "category": "Site de présentation",
+        "domain": "Gestion Budgétaire",
+        "role": "Développeur Full Stack",
+        "description": "Conception et développement complet du site de présentation de l'application Budjeo. Mise en place du déploiement continu et automatisé via pipelines CI/CD pour garantir rapidité et fiabilité des mises à jour."
+      },
+      "budjeoApp": {
+        "category": "Application mobile multiplateforme",
+        "domain": "Finance Mobile",
+        "role": "Développeur Full Stack Flutter",
+        "description": "Développement complet d'une application mobile intuitive et performante pour la gestion budgétaire. Gestion d'état avec Provider, visualisation de données avec fl_chart, stockage local et internationalisation complète. UI fluide et moderne, optimisée pour iOS et Android.",
+        "features": {
+          "flChart": "fl_chart",
+          "sharedPrefs": "shared_preferences",
+          "intl": "intl"
+        }
+      },
+      "pairleHypnose": {
+        "category": "Site vitrine professionnel",
+        "domain": "Bien-être",
+        "role": "Développeur Full Stack",
+        "description": "Création d'un site web sur mesure pour un institut de beauté. Intégration de thèmes personnalisés, gestion des contenus dynamiques et optimisation SEO."
+      },
+      "terasolar": {
+        "category": "Site de présentation d'entreprise",
+        "domain": "Énergie Solaire",
+        "role": "Développeur Front-End",
+        "description": "Intégration responsive du site vitrine de TeraSolar, avec attention particulière à la clarté de l'information et à la fluidité de la navigation sur tous les appareils."
+      },
+      "amcreations": {
+        "category": "Portfolio personnel",
+        "domain": "Portfolio",
+        "role": "Développeur Full Stack",
+        "description": "Développement d'un portfolio moderne et interactif avec design épuré et animations fluides.",
+        "features": {
+          "darkMode": "Mode clair/sombre persistant 🌗",
+          "components": "Composants réutilisables ♻️",
+          "performance": "Performance optimisée (Lighthouse 95+) ⚡",
+          "cicd": "CI/CD automatisé 🚀"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Compétences & Outils",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile"
+    }
+  },
+  "github": {
+    "contributions": "contributions au cours de l'année",
+    "viewOnGithub": "Voir sur GitHub",
+    "learn": "En savoir plus sur le calcul des contributions",
+    "less": "Moins",
+    "more": "Plus",
+    "loading": "Chargement des contributions...",
+    "demoMode": "Mode démo activé",
+    "contributionsOn": "contributions le"
+  },
+  "footer": {
+    "portfolio": "PORTFOLIO",
+    "contact": "CONTACT",
+    "about": "À propos",
+    "works": "Projets",
+    "skills": "Compétences",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "copyright": "Copyright © 2025 Alexandre Marolleau"
+  }
+}

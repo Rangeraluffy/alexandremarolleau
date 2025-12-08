@@ -1,7 +1,9 @@
 import { useTheme } from '../../context/ThemeContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Footer = () => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   
   return (
     <footer className="bg-white dark:bg-[#0d1117] transition-colors duration-300">
@@ -25,31 +27,31 @@ const Footer = () => {
               {/* Colonne PORTFOLIO */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-                  PORTFOLIO
+                  {t('footer.portfolio')}
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <a 
-                      href="#about" 
+                    <a
+                      href="#about"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                     >
-                      About
+                      {t('footer.about')}
                     </a>
                   </li>
                   <li>
-                    <a 
-                      href="#works" 
+                    <a
+                      href="#works"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                     >
-                      Works
+                      {t('footer.works')}
                     </a>
                   </li>
                   <li>
-                    <a 
-                      href="#skills" 
+                    <a
+                      href="#skills"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                     >
-                      Skills
+                      {t('footer.skills')}
                     </a>
                   </li>
                 </ul>
@@ -58,27 +60,27 @@ const Footer = () => {
               {/* Colonne CONTACT */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-                  CONTACT
+                  {t('footer.contact')}
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <a 
-                      href="https://github.com/alexandremarolleau" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://github.com/alexandremarolleau"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                     >
-                      GitHub
+                      {t('footer.github')}
                     </a>
                   </li>
                   <li>
-                    <a 
-                      href="https://linkedin.com/in/alexandre-marolleau" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://linkedin.com/in/alexandre-marolleau"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                     >
-                      LinkedIn
+                      {t('footer.linkedin')}
                     </a>
                   </li>
                 </ul>
@@ -89,7 +91,7 @@ const Footer = () => {
           {/* Copyright - En bas à droite */}
           <div className="mt-12 flex justify-center">
             <p className="text-sm text-gray-500 dark:text-gray-500 transition-colors duration-300">
-              Copyright © 2025 Alexandre Marolleau
+              {t('footer.copyright')}
             </p>
           </div>
         </div>

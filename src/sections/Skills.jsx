@@ -2,16 +2,18 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import GitHubContributions from '../components/GitHubContributions';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
   const skillsData = [
     {
-      name: 'Frontend',
+      nameKey: 'skills.categories.frontend',
       skills: [
         { name: 'React / Next.js', level: 90 },
         { name: 'Vue.js', level: 75 },
@@ -20,7 +22,7 @@ const Skills = () => {
       ],
     },
     {
-      name: 'Backend',
+      nameKey: 'skills.categories.backend',
       skills: [
         { name: 'Node.js / Express', level: 85 },
         { name: 'Python / Django', level: 70 },
@@ -29,7 +31,7 @@ const Skills = () => {
       ],
     },
     {
-      name: 'Mobile',
+      nameKey: 'skills.categories.mobile',
       skills: [
         { name: 'Flutter', level: 85 },
         { name: 'React Native', level: 75 },
@@ -68,20 +70,20 @@ const Skills = () => {
     >
       <div className="container mx-auto px-6">
         <h2 className="text-5xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-          Skills & Tools
+          {t('skills.title')}
         </h2>
         <div className="w-24 h-1 bg-blue-600 mx-auto mb-16"></div>
 
         {/* Grille de compétences */}
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
           {skillsData.map((category, index) => (
-            <div 
-              key={category.name} 
+            <div
+              key={category.nameKey}
               ref={(el) => (cardsRef.current[index] = el)}
               className="bg-white dark:bg-[#0d1117] rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300"
             >
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white transition-colors duration-300">
-                {category.name}
+                {t(category.nameKey)}
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill) => (

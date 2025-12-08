@@ -2,10 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { fetchGitHubContributions, generateMockContributions } from '../services/githubService';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
+  const { t } = useLanguage();
   const [contributions, setContributions] = useState(new Map());
   const [stats, setStats] = useState({ total: 0, currentStreak: 0, longestStreak: 0 });
   const [loading, setLoading] = useState(true);
@@ -237,7 +239,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
       <div className="flex items-center justify-center py-12">
         <div className="flex items-center gap-3">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
-          <span className="text-gray-600 dark:text-gray-400">Chargement des contributions...</span>
+          <span className="text-gray-600 dark:text-gray-400">{t('github.loading')}</span>
         </div>
       </div>
     );
@@ -252,15 +254,15 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            {stats.total} contributions in the last year
+            {stats.total} {t('github.contributions')}
           </h3>
-          <a 
+          <a
             href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm dark:text-white hover:underline flex items-center gap-1"
           >
-            View on GitHub
+            {t('github.viewOnGithub')}
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
             </svg>
@@ -269,7 +271,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
 
         {error && (
           <div className="text-xs text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 px-3 py-2 rounded border border-yellow-200 dark:border-yellow-800">
-            ⚠️ Mode démo activé - {error}
+            ⚠️ {t('github.demoMode')} - {error}
           </div>
         )}
       </div>
@@ -365,17 +367,17 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
 
         {/* Légende - Style GitHub */}
         <div className="flex items-center justify-between mt-4 text-xs text-gray-600 dark:text-gray-400">
-          <a 
+          <a
             href="https://docs.github.com/articles/viewing-contributions-on-your-profile"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-600 dark:hover:text-blue-400 hover:underline"
           >
-            Learn how we count contributions
+            {t('github.learn')}
           </a>
-          
+
           <div className="flex items-center gap-2">
-            <span>Less</span>
+            <span>{t('github.less')}</span>
             <div className="flex gap-1">
               {[0, 1, 2, 3, 4].map(level => (
                 <div
@@ -384,7 +386,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
                 />
               ))}
             </div>
-            <span>More</span>
+            <span>{t('github.more')}</span>
           </div>
         </div>
       </div>

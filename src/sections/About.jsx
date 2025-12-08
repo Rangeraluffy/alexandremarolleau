@@ -2,10 +2,12 @@ import { useEffect, useRef } from 'react';
 import { FiCode, FiDatabase, FiServer } from 'react-icons/fi';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const titleWrapRef = useRef(null);
   const textDescRef = useRef(null);
@@ -16,18 +18,18 @@ const About = () => {
   const highlights = [
     {
       icon: FiCode,
-      title: 'Frontend',
-      description: 'React, Vue, Tailwind CSS',
+      titleKey: 'about.highlights.frontend.title',
+      descriptionKey: 'about.highlights.frontend.description',
     },
     {
       icon: FiServer,
-      title: 'Backend',
-      description: 'Node.js, Python, APIs REST',
+      titleKey: 'about.highlights.backend.title',
+      descriptionKey: 'about.highlights.backend.description',
     },
     {
       icon: FiDatabase,
-      title: 'Database',
-      description: 'MongoDB, PostgreSQL, Redis',
+      titleKey: 'about.highlights.database.title',
+      descriptionKey: 'about.highlights.database.description',
     },
   ];
 
@@ -164,7 +166,7 @@ const About = () => {
       >
         <div className="text-center">
           <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
-            About Me
+            {t('about.title')}
           </h2>
         </div>
       </div>
@@ -176,12 +178,10 @@ const About = () => {
       >
         <div className="max-w-4xl text-center">
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">
-            Développeur Full Stack Passionné
+            {t('about.subtitle')}
           </h3>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-            Avec plus de 5 ans d'expérience dans le développement web, je crée des expériences numériques 
-            modernes et performantes. Spécialisé dans les technologies React, Node.js et les architectures cloud, 
-            je transforme vos idées en applications web robustes et scalables.
+            {t('about.description')}
           </p>
         </div>
       </div>
@@ -194,19 +194,19 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
           {/* Statistiques - 2 colonnes de 50% chacune */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
-            <div 
+            <div
               ref={(el) => (statsRef.current[0] = el)}
               className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
               <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">5+</h3>
-              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Années d'expérience</p>
+              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.experience')}</p>
             </div>
-            <div 
+            <div
               ref={(el) => (statsRef.current[1] = el)}
               className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
               <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">50+</h3>
-              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Projets réalisés</p>
+              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.projects')}</p>
             </div>
           </div>
 
@@ -216,16 +216,16 @@ const About = () => {
               const Icon = item.icon;
               return (
                 <div
-                  key={item.title}
+                  key={item.titleKey}
                   ref={(el) => (cardsRef.current[index] = el)}
                   className="bg-gray-100 dark:bg-[#0d1117] p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
                 >
                   <Icon className="text-gray-900 dark:text-white mb-3 transition-colors duration-300" size={32} />
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-lg transition-colors duration-300">
-                    {item.title}
+                    {t(item.titleKey)}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
-                    {item.description}
+                    {t(item.descriptionKey)}
                   </p>
                 </div>
               );

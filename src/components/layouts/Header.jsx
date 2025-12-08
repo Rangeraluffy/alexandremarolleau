@@ -1,9 +1,12 @@
 import { useTheme } from '../../context/ThemeContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { useState } from 'react';
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isLangTransitioning, setIsLangTransitioning] = useState(false);
 
   const handleThemeToggle = () => {
     setIsTransitioning(true);
@@ -12,6 +15,16 @@ const Header = () => {
     // Réinitialiser l'animation après la transition
     setTimeout(() => {
       setIsTransitioning(false);
+    }, 500);
+  };
+
+  const handleLanguageToggle = () => {
+    setIsLangTransitioning(true);
+    toggleLanguage();
+
+    // Réinitialiser l'animation après la transition
+    setTimeout(() => {
+      setIsLangTransitioning(false);
     }, 500);
   };
 
@@ -51,10 +64,10 @@ const Header = () => {
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
-                ABOUT
+                {t('header.about')}
               </span>
               <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                ABOUT
+                {t('header.about')}
               </span>
             </a>
             <a
@@ -63,10 +76,10 @@ const Header = () => {
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
-                WORKS
+                {t('header.works')}
               </span>
               <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                WORKS
+                {t('header.works')}
               </span>
             </a>
             <a
@@ -75,10 +88,10 @@ const Header = () => {
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
-                SKILLS
+                {t('header.skills')}
               </span>
               <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                SKILLS
+                {t('header.skills')}
               </span>
             </a>
             <a
@@ -86,43 +99,69 @@ const Header = () => {
               onClick={(e) => handleSmoothScroll(e, '#contact')}
               className="relative overflow-hidden group font-medium"
             >
-              <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
-                CONTACT
-              </span>
-              <span className="absolute top-0 left-0 text-gray-900 dark:text-white translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                CONTACT
-              </span>
             </a>
           </div>
-          
-          {/* Toggle Dark/Light avec transition fluide */}
-          <button
-            onClick={handleThemeToggle}
-            className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {/* Icône Lune */}
-            <img
-              src="/assets/moon-dark.svg"
-              alt="Dark mode"
-              className={`h-6 w-6 absolute inset-0 m-auto transition-all duration-500 ${
-                theme === 'light' 
-                  ? 'opacity-100 rotate-0 scale-100' 
-                  : 'opacity-0 -rotate-90 scale-50'
-              } ${isTransitioning ? 'hover:rotate-12' : ''}`}
-            />
-            
-            {/* Icône Soleil */}
-            <img
-              src="/assets/sun.svg"
-              alt="Light mode"
-              className={`h-6 w-6 transition-all duration-500 ${
-                theme === 'dark' 
-                  ? 'opacity-100 rotate-0 scale-100' 
-                  : 'opacity-0 rotate-90 scale-50'
-              } ${isTransitioning ? 'hover:rotate-12' : ''}`}
-            />
-          </button>
+
+          {/* Controls: Language & Theme */}
+          <div className="flex items-center gap-2">
+            {/* Toggle Language */}
+            <button
+              onClick={handleLanguageToggle}
+              className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label={language === 'en' ? 'Switch to French' : 'Passer en Anglais'}
+            >
+              {/* EN Flag/Text */}
+              <span
+                className={`absolute inset-0 flex items-center justify-center text-sm font-bold transition-all duration-500 ${
+                  language === 'en'
+                    ? 'opacity-100 rotate-0 scale-100'
+                    : 'opacity-0 -rotate-90 scale-50'
+                } ${isLangTransitioning ? 'hover:rotate-12' : ''}`}
+              >
+                <span className="text-gray-900 dark:text-white">EN</span>
+              </span>
+
+              {/* FR Flag/Text */}
+              <span
+                className={`flex items-center justify-center text-sm font-bold transition-all duration-500 ${
+                  language === 'fr'
+                    ? 'opacity-100 rotate-0 scale-100'
+                    : 'opacity-0 rotate-90 scale-50'
+                } ${isLangTransitioning ? 'hover:rotate-12' : ''}`}
+              >
+                <span className="text-gray-900 dark:text-white">FR</span>
+              </span>
+            </button>
+
+            {/* Toggle Dark/Light avec transition fluide */}
+            <button
+              onClick={handleThemeToggle}
+              className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {/* Icône Lune */}
+              <img
+                src="/assets/moon-dark.svg"
+                alt="Dark mode"
+                className={`h-6 w-6 absolute inset-0 m-auto transition-all duration-500 ${
+                  theme === 'light'
+                    ? 'opacity-100 rotate-0 scale-100'
+                    : 'opacity-0 -rotate-90 scale-50'
+                } ${isTransitioning ? 'hover:rotate-12' : ''}`}
+              />
+
+              {/* Icône Soleil */}
+              <img
+                src="/assets/sun.svg"
+                alt="Light mode"
+                className={`h-6 w-6 transition-all duration-500 ${
+                  theme === 'dark'
+                    ? 'opacity-100 rotate-0 scale-100'
+                    : 'opacity-0 rotate-90 scale-50'
+                } ${isTransitioning ? 'hover:rotate-12' : ''}`}
+              />
+            </button>
+          </div>
         </div>
       </nav>
     </header>

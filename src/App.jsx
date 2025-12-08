@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useTheme } from './context/ThemeContext'; 
+import { useTheme } from './context/ThemeContext';
+import { useLanguage } from './context/LanguageContext'; 
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Works from './sections/Works';
@@ -13,7 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const { theme } = useTheme();
-  
+  const { t } = useLanguage();
+
   // Activation du smooth scroll
   useLenis();
 
@@ -75,7 +77,7 @@ function App() {
           <button
             onClick={scrollToWorks}
             className="hero-text absolute bottom-12 left-1/2 -translate-x-1/2 text-gray-400 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer animate-bounce"
-            aria-label="Scroll to content"
+            aria-label={t('hero.scrollDown')}
           >
             <svg
               className="w-6 h-6"

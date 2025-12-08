@@ -1,0 +1,118 @@
+{
+  "header": {
+    "about": "ABOUT",
+    "works": "WORKS",
+    "skills": "SKILLS",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "scrollDown": "Scroll to content"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate Full Stack Developer",
+    "description": "With over 5 years of experience in web development, I create modern and performant digital experiences. Specialized in React, Node.js, and cloud architectures, I transform your ideas into robust and scalable web applications.",
+    "stats": {
+      "experience": "Years of experience",
+      "projects": "Projects completed"
+    },
+    "highlights": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Vue, Tailwind CSS"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Python, REST APIs"
+      },
+      "database": {
+        "title": "Database",
+        "description": "MongoDB, PostgreSQL, Redis"
+      }
+    }
+  },
+  "works": {
+    "viewProject": "View project",
+    "stack": "Stack",
+    "domain": "Domain",
+    "role": "Role",
+    "features": "Features",
+    "projects": {
+      "stayCourchevel": {
+        "category": "Luxury real estate rental website",
+        "domain": "Luxury Real Estate",
+        "role": "Front-End Developer",
+        "description": "Participated in the development of the user interface and implementation of dynamic animations on a high-end showcase website. Careful integration work to ensure visual coherence and performance on all devices."
+      },
+      "budjeoWeb": {
+        "category": "Presentation website",
+        "domain": "Budget Management",
+        "role": "Full Stack Developer",
+        "description": "Complete design and development of the Budjeo application presentation website. Implementation of continuous and automated deployment via CI/CD pipelines to guarantee speed and reliability of updates."
+      },
+      "budjeoApp": {
+        "category": "Cross-platform mobile application",
+        "domain": "Mobile Finance",
+        "role": "Full Stack Flutter Developer",
+        "description": "Complete development of an intuitive and performant mobile application for budget management. State management with Provider, data visualization with fl_chart, local storage and complete internationalization. Fluid and modern UI, optimized for iOS and Android.",
+        "features": {
+          "flChart": "fl_chart",
+          "sharedPrefs": "shared_preferences",
+          "intl": "intl"
+        }
+      },
+      "pairleHypnose": {
+        "category": "Professional showcase website",
+        "domain": "Wellness",
+        "role": "Full Stack Developer",
+        "description": "Creation of a custom website for a beauty institute. Integration of custom themes, dynamic content management and SEO optimization."
+      },
+      "terasolar": {
+        "category": "Company presentation website",
+        "domain": "Solar Energy",
+        "role": "Front-End Developer",
+        "description": "Responsive integration of the TeraSolar showcase website, with particular attention to information clarity and navigation fluidity on all devices."
+      },
+      "amcreations": {
+        "category": "Personal portfolio",
+        "domain": "Portfolio",
+        "role": "Full Stack Developer",
+        "description": "Development of a modern and interactive portfolio with clean design and fluid animations.",
+        "features": {
+          "darkMode": "Persistent light/dark mode 🌗",
+          "components": "Reusable components ♻️",
+          "performance": "Optimized performance (Lighthouse 95+) ⚡",
+          "cicd": "Automated CI/CD 🚀"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills & Tools",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile"
+    }
+  },
+  "github": {
+    "contributions": "contributions in the last year",
+    "viewOnGithub": "View on GitHub",
+    "learn": "Learn how we count contributions",
+    "less": "Less",
+    "more": "More",
+    "loading": "Loading contributions...",
+    "demoMode": "Demo mode activated",
+    "contributionsOn": "contributions on"
+  },
+  "footer": {
+    "portfolio": "PORTFOLIO",
+    "contact": "CONTACT",
+    "about": "About",
+    "works": "Works",
+    "skills": "Skills",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "copyright": "Copyright © 2025 Alexandre Marolleau"
+  }
+}

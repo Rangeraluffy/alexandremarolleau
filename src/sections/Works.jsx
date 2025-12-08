@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Works = () => {
+  const { t } = useLanguage();
   const workWrapRef = useRef(null);
   const triggersRef = useRef([]);
   const itemsRef = useRef([]);
@@ -13,81 +15,58 @@ const Works = () => {
     {
       id: 1,
       title: 'STAY COURCHEVEL',
-      category: 'Site de location immobilière de luxe',
+      translationKey: 'stayCourchevel',
       stack: 'HTML, SCSS, JavaScript, C# .NET',
-      domain: 'Immobilier de Luxe',
       image: '/assets/stay-courchevel.png',
       imageBlur: '/assets/stay-courchevel.png',
       link: '#',
-      role: 'Développeur Front-End',
-      description: 'Participation au développement de l\'interface utilisateur et à la mise en place d\'animations dynamiques sur un site vitrine haut de gamme. Travail d\'intégration soigné pour assurer cohérence visuelle et performance sur tous les supports.',
     },
     {
       id: 2,
       title: 'BUDJEO WEB',
-      category: 'Site de présentation',
+      translationKey: 'budjeoWeb',
       stack: 'Astro, SCSS, JavaScript, CI/CD',
-      domain: 'Gestion Budgétaire',
       image: '/assets/budjeo-mockup.png',
       imageBlur: '/assets/budjeo-mockup.png',
       link: 'https://budjeo.com',
-      role: 'Développeur Full Stack',
-      description: 'Conception et développement complet du site de présentation de l\'application Budjeo. Mise en place du déploiement continu et automatisé via pipelines CI/CD pour garantir rapidité et fiabilité des mises à jour.',
     },
     {
       id: 3,
       title: 'BUDJEO APP',
-      category: 'Application mobile multiplateforme',
+      translationKey: 'budjeoApp',
       stack: 'Flutter 3.4.4+, Dart, Provider',
-      domain: 'Finance Mobile',
       image: '/assets/budjeo-app.png',
       imageBlur: '/assets/budjeo-app.png',
       link: 'https://testflight.apple.com/join/DTzBsT2E',
-      role: 'Développeur Full Stack Flutter',
-      description: 'Développement complet d\'une application mobile intuitive et performante pour la gestion budgétaire. Gestion d\'état avec Provider, visualisation de données avec fl_chart, stockage local et internationalisation complète. UI fluide et moderne, optimisée pour iOS et Android.',
-      features: ['fl_chart', 'shared_preferences', 'intl'],
+      techFeatures: ['flChart', 'sharedPrefs', 'intl'],
     },
     {
       id: 4,
       title: 'Pairle Hypnose',
-      category: 'Site vitrine professionnel',
+      translationKey: 'pairleHypnose',
       stack: 'HTML, CSS, JavaScript',
-      domain: 'Bien-être',
-    image: '/assets/pairlehypnose.png',
+      image: '/assets/pairlehypnose.png',
       imageBlur: '/assets/budjeo-mockup.png',
       link: '#',
-      role: 'Développeur Full Stack',
-      description: 'Création d\'un site web sur mesure pour un institut de beauté. Intégration de thèmes personnalisés, gestion des contenus dynamiques et optimisation SEO.',
     },
     {
       id: 5,
       title: 'TERASOLAR',
-      category: 'Site de présentation d\'entreprise',
+      translationKey: 'terasolar',
       stack: 'HTML, CSS, JavaScript',
-      domain: 'Énergie Solaire',
       image: '/assets/terasolar.png',
       imageBlur: '/assets/terasolar.png',
       link: '#',
-      role: 'Développeur Front-End',
-      description: 'Intégration responsive du site vitrine de TeraSolar, avec attention particulière à la clarté de l\'information et à la fluidité de la navigation sur tous les appareils.',
     },
     {
       id: 6,
       title: 'AMCREATIONS',
-      category: 'Portfolio personnel',
+      translationKey: 'amcreations',
       stack: 'React, Tailwind CSS, GSAP, ScrollTrigger',
-      domain: 'Portfolio',
-    image: '/assets/amcreations.png',
+      image: '/assets/amcreations.png',
       imageBlur: '/assets/amcreations.png',
       link: 'https://alexandremarolleau.com',
-      role: 'Développeur Full Stack',
-      description: 'Développement d\'un portfolio moderne et interactif avec design épuré et animations fluides.',
-      features: [
-        'Mode clair/sombre persistant 🌗',
-        'Composants réutilisables ♻️',
-        'Performance optimisée (Lighthouse 95+) ⚡',
-        'CI/CD automatisé 🚀'
-      ],
+      hasCustomFeatures: true,
     },
   ];
 
@@ -254,7 +233,7 @@ const Works = () => {
                       </a>
                       
                       <div className="text-white/80 text-xl md:text-2xl lg:text-3xl">
-                        {project.category}
+                        {t(`works.projects.${project.translationKey}.category`)}
                       </div>
                     </div>
 
@@ -263,33 +242,48 @@ const Works = () => {
                       <div className="work_services">
                         <div className="flex flex-col gap-2">
                           <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">Stack:</span> {project.stack}
+                            <span className="font-semibold">{t('works.stack')}:</span> {project.stack}
                           </div>
                           <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">Domaine:</span> {project.domain}
+                            <span className="font-semibold">{t('works.domain')}:</span> {t(`works.projects.${project.translationKey}.domain`)}
                           </div>
                           <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">Rôle:</span> {project.role}
+                            <span className="font-semibold">{t('works.role')}:</span> {t(`works.projects.${project.translationKey}.role`)}
                           </div>
-                          
-                          {/* Affichage des features si présentes */}
-                          {project.features && project.features.length > 0 && (
+
+                          {/* Affichage des features techniques */}
+                          {project.techFeatures && project.techFeatures.length > 0 && (
                             <div className="mt-2">
                               <div className="text-white/90 text-sm md:text-base font-semibold mb-1">
-                                Features:
+                                {t('works.features')}:
                               </div>
                               <ul className="text-white/70 text-xs md:text-sm space-y-1">
-                                {project.features.map((feature, idx) => (
-                                  <li key={idx}>• {feature}</li>
+                                {project.techFeatures.map((feature, idx) => (
+                                  <li key={idx}>• {t(`works.projects.${project.translationKey}.features.${feature}`)}</li>
                                 ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Affichage des features personnalisées */}
+                          {project.hasCustomFeatures && (
+                            <div className="mt-2">
+                              <div className="text-white/90 text-sm md:text-base font-semibold mb-1">
+                                {t('works.features')}:
+                              </div>
+                              <ul className="text-white/70 text-xs md:text-sm space-y-1">
+                                <li>• {t(`works.projects.${project.translationKey}.features.darkMode`)}</li>
+                                <li>• {t(`works.projects.${project.translationKey}.features.components`)}</li>
+                                <li>• {t(`works.projects.${project.translationKey}.features.performance`)}</li>
+                                <li>• {t(`works.projects.${project.translationKey}.features.cicd`)}</li>
                               </ul>
                             </div>
                           )}
                         </div>
                       </div>
-                      
+
                       {/* CTA */}
-                      <a 
+                      <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -297,10 +291,10 @@ const Works = () => {
                       >
                         <span className="link_text_wrap relative overflow-hidden">
                           <span className="link_text block transition-transform group-hover:-translate-y-full">
-                            View project
+                            {t('works.viewProject')}
                           </span>
                           <span className="link_text absolute top-0 left-0 translate-y-full transition-transform group-hover:translate-y-0">
-                            View project
+                            {t('works.viewProject')}
                           </span>
                         </span>
                         <svg 
