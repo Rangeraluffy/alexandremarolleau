@@ -1,5 +1,5 @@
 import { useTheme } from '../../context/ThemeContext';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -8,11 +8,26 @@ const Header = () => {
   const handleThemeToggle = () => {
     setIsTransitioning(true);
     toggleTheme();
-    
+
     // Réinitialiser l'animation après la transition
     setTimeout(() => {
       setIsTransitioning(false);
     }, 500);
+  };
+
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      const headerOffset = 100; // Ajustez selon la hauteur de votre header
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -30,8 +45,9 @@ const Header = () => {
 
           {/* Navigation */}
           <div className="flex space-x-8 items-center">
-            <a 
-              href="#about" 
+            <a
+              href="#about"
+              onClick={(e) => handleSmoothScroll(e, '#about')}
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
@@ -41,8 +57,9 @@ const Header = () => {
                 ABOUT
               </span>
             </a>
-            <a 
-              href="#works" 
+            <a
+              href="#works"
+              onClick={(e) => handleSmoothScroll(e, '#works')}
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
@@ -52,8 +69,9 @@ const Header = () => {
                 WORKS
               </span>
             </a>
-            <a 
-              href="#skills" 
+            <a
+              href="#skills"
+              onClick={(e) => handleSmoothScroll(e, '#skills')}
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
@@ -63,8 +81,9 @@ const Header = () => {
                 SKILLS
               </span>
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
+              onClick={(e) => handleSmoothScroll(e, '#contact')}
               className="relative overflow-hidden group font-medium"
             >
               <span className="block text-gray-900 dark:text-white transition-transform duration-300 group-hover:-translate-y-full">
