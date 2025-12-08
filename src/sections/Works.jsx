@@ -207,111 +207,176 @@ const Works = () => {
                 </div>
 
                 {/* Colonne 2 : Contenu texte (colonnes 9-12) */}
-                <div className="work_column-2 col-span-12 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end">
-                  <div className="work_content flex flex-col justify-between items-start w-full h-1/2 gap-6">
-                    
+                <div className="work_column-2 col-span-12 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end px-6 md:px-0">
+                  <div className="work_content flex flex-col justify-between items-start w-full gap-8">
+
                     {/* Titre */}
                     <div className="work_title_wrap flex flex-col justify-start items-start gap-4 w-full">
                       <div className="work_number_wrap flex items-center justify-center">
-                        <div className="text-white text-2xl font-bold">
+                        <div className="text-white text-2xl font-bold backdrop-blur-sm">
                           [{String(index + 1).padStart(2, '0')}]
                         </div>
                       </div>
-                      
-                      <a 
+
+                      <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text_link relative overflow-hidden group"
                       >
-                        <div className="link_text text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-none transition-transform group-hover:-translate-y-full">
+                        <div className="link_text text-white text-4xl md:text-6xl lg:text-5xl font-bold leading-none transition-transform group-hover:-translate-y-full">
                           {project.title}
                         </div>
-                        <div className="link_text absolute top-0 left-0 text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-none translate-y-full transition-transform group-hover:translate-y-0">
+                        <div className="link_text absolute top-0 left-0 text-white text-4xl md:text-6xl lg:text-5xl font-bold leading-none translate-y-full transition-transform group-hover:translate-y-0">
                           {project.title}
                         </div>
                       </a>
-                      
-                      <div className="text-white/80 text-xl md:text-2xl lg:text-3xl">
+
+                      <div className="text-white/90 text-xl md:text-2xl lg:text-2xl font-light">
                         {t(`works.projects.${project.translationKey}.category`)}
                       </div>
                     </div>
 
-                    {/* Services & Features */}
-                    <div className="work_services_wrap grid gap-4">
-                      <div className="work_services">
-                        <div className="flex flex-col gap-2">
-                          <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">{t('works.stack')}:</span> {project.stack}
-                          </div>
-                          <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">{t('works.domain')}:</span> {t(`works.projects.${project.translationKey}.domain`)}
-                          </div>
-                          <div className="text-white/80 text-sm md:text-base">
-                            <span className="font-semibold">{t('works.role')}:</span> {t(`works.projects.${project.translationKey}.role`)}
-                          </div>
+                    {/* Technologies Stack - Modern Tags */}
+                    <div className="work_stack_wrap w-full">
+                      <div className="flex flex-wrap gap-2">
+                        {project.stack.split(',').map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="group relative px-4 py-2 text-xs md:text-sm font-medium text-white bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-md rounded-full border border-white/30 hover:border-white/60 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                          >
+                            <span className="relative z-10">{tech.trim()}</span>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300" />
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-                          {/* Affichage des features techniques */}
-                          {project.techFeatures && project.techFeatures.length > 0 && (
-                            <div className="mt-2">
-                              <div className="text-white/90 text-sm md:text-base font-semibold mb-1">
-                                {t('works.features')}:
-                              </div>
-                              <ul className="text-white/70 text-xs md:text-sm space-y-1">
-                                {project.techFeatures.map((feature, idx) => (
-                                  <li key={idx}>• {t(`works.projects.${project.translationKey}.features.${feature}`)}</li>
-                                ))}
-                              </ul>
+                    {/* Info Cards - Glassmorphism Style */}
+                    <div className="work_info_cards w-full  flex gap-3">
+                      {/* Domain Card */}
+                      <div className="flex-1 group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                        <div className="relative z-10 flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider mb-1">
+                              {t('works.domain')}
                             </div>
-                          )}
-
-                          {/* Affichage des features personnalisées */}
-                          {project.hasCustomFeatures && (
-                            <div className="mt-2">
-                              <div className="text-white/90 text-sm md:text-base font-semibold mb-1">
-                                {t('works.features')}:
-                              </div>
-                              <ul className="text-white/70 text-xs md:text-sm space-y-1">
-                                <li>• {t(`works.projects.${project.translationKey}.features.darkMode`)}</li>
-                                <li>• {t(`works.projects.${project.translationKey}.features.components`)}</li>
-                                <li>• {t(`works.projects.${project.translationKey}.features.performance`)}</li>
-                                <li>• {t(`works.projects.${project.translationKey}.features.cicd`)}</li>
-                              </ul>
+                            <div className="text-white text-sm md:text-base font-semibold">
+                              {t(`works.projects.${project.translationKey}.domain`)}
                             </div>
-                          )}
+                          </div>
                         </div>
                       </div>
 
-                      {/* CTA */}
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text_link inline-flex items-center gap-2 text-white text-base md:text-lg hover:gap-4 transition-all group"
-                      >
-                        <span className="link_text_wrap relative overflow-hidden">
-                          <span className="link_text block transition-transform group-hover:-translate-y-full">
-                            {t('works.viewProject')}
-                          </span>
-                          <span className="link_text absolute top-0 left-0 translate-y-full transition-transform group-hover:translate-y-0">
-                            {t('works.viewProject')}
-                          </span>
-                        </span>
-                        <svg 
-                          className="link_icon w-4 h-3" 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          viewBox="0 0 18 12" 
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        >
-                          <path d="M12 3L6 9" />
-                          <path d="M6 3H12V9" />
-                          <path d="M4 1H1V11H4" />
-                          <path d="M14 1H17V11H14" />
-                        </svg>
-                      </a>
+                      {/* Role Card */}
+                      <div className="flex-1 group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                        <div className="relative z-10 flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider mb-1">
+                              {t('works.role')}
+                            </div>
+                            <div className="text-white text-sm md:text-base font-semibold">
+                              {t(`works.projects.${project.translationKey}.role`)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    {/* Features Card */}
+                      {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
+                        <div className="group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/30 to-pink-500/30 border border-white/20">
+                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                              </div>
+                              <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider">
+                                {t('works.features')}
+                              </div>
+                            </div>
+                            <div className="space-y-2 ml-1">
+                              {project.techFeatures && project.techFeatures.map((feature, idx) => (
+                                <div key={idx} className="flex items-center gap-2 group/item">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
+                                  <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                    {t(`works.projects.${project.translationKey}.features.${feature}`)}
+                                  </span>
+                                </div>
+                              ))}
+                              {project.hasCustomFeatures && (
+                                <>
+                                  <div className="flex items-center gap-2 group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                      {t(`works.projects.${project.translationKey}.features.darkMode`)}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2 group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                      {t(`works.projects.${project.translationKey}.features.components`)}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2 group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                      {t(`works.projects.${project.translationKey}.features.performance`)}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2 group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                      {t(`works.projects.${project.translationKey}.features.cicd`)}
+                                    </span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                    {/* CTA Button - Enhanced */}
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-3 px-6 py-3 text-white text-sm md:text-base font-medium backdrop-blur-md bg-white/10 border border-white/30 rounded-full hover:bg-white/20 hover:border-white/50 hover:gap-5 transition-all duration-300 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="link_text_wrap relative overflow-hidden">
+                        <span className="link_text block transition-transform group-hover:-translate-y-full">
+                          {t('works.viewProject')}
+                        </span>
+                        <span className="link_text absolute top-0 left-0 translate-y-full transition-transform group-hover:translate-y-0">
+                          {t('works.viewProject')}
+                        </span>
+                      </span>
+                      <svg
+                        className="link_icon w-4 h-4 relative z-10 group-hover:rotate-45 transition-transform duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </div>
