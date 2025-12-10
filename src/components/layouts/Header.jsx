@@ -94,12 +94,6 @@ const Header = () => {
                 {t('header.skills')}
               </span>
             </a>
-            <a
-              href="#contact"
-              onClick={(e) => handleSmoothScroll(e, '#contact')}
-              className="relative overflow-hidden group font-medium"
-            >
-            </a>
           </div>
 
           {/* Controls: Language & Theme */}
@@ -107,7 +101,7 @@ const Header = () => {
             {/* Toggle Language */}
             <button
               onClick={handleLanguageToggle}
-              className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="p-2 rounded-lg transition-all duration-300 relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800 w-10 h-10"
               aria-label={language === 'en' ? 'Switch to French' : 'Passer en Anglais'}
             >
               {/* EN Flag/Text */}
@@ -123,7 +117,7 @@ const Header = () => {
 
               {/* FR Flag/Text */}
               <span
-                className={`flex items-center justify-center text-sm font-bold transition-all duration-500 ${
+                className={`absolute inset-0 flex items-center justify-center text-sm font-bold transition-all duration-500 ${
                   language === 'fr'
                     ? 'opacity-100 rotate-0 scale-100'
                     : 'opacity-0 rotate-90 scale-50'

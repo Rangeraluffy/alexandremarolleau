@@ -208,7 +208,7 @@ const Works = () => {
 
                 {/* Colonne 2 : Contenu texte (colonnes 9-12) */}
                 <div className="work_column-2 col-span-12 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end px-6 md:px-0">
-                  <div className="work_content flex flex-col justify-between items-start w-full gap-8">
+                  <div className="work_content flex flex-col justify-between items-start w-full gap-2">
 
                     {/* Titre */}
                     <div className="work_title_wrap flex flex-col justify-start items-start gap-4 w-full">
@@ -243,7 +243,7 @@ const Works = () => {
                         {project.stack.split(',').map((tech, idx) => (
                           <span
                             key={idx}
-                            className="group relative px-4 py-2 text-xs md:text-sm font-medium text-white bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-md rounded-full border border-white/30 hover:border-white/60 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                            className="group relative px-4 py-2 text-xs md:text-sm font-medium text-white bg-gradient-to-br from-black/20 to-black/5 backdrop-blur-md rounded-full border border-black/30 hover:border-black/60 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                           >
                             <span className="relative z-10">{tech.trim()}</span>
                             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300" />
@@ -255,7 +255,7 @@ const Works = () => {
                     {/* Info Cards - Glassmorphism Style */}
                     <div className="work_info_cards w-full  flex gap-3">
                       {/* Domain Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                         <div className="relative z-10 flex items-start gap-3">
                           <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
                             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -274,7 +274,7 @@ const Works = () => {
                       </div>
 
                       {/* Role Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                         <div className="relative z-10 flex items-start gap-3">
                           <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
@@ -295,7 +295,7 @@ const Works = () => {
                     </div>
                     {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
-                        <div className="group relative backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/15 hover:border-white/40 transition-all duration-300 overflow-hidden">
+                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                           <div className="relative z-10">
                             <div className="flex items-center gap-3 mb-3">
@@ -355,7 +355,7 @@ const Works = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex items-center gap-3 px-6 py-3 text-white text-sm md:text-base font-medium backdrop-blur-md bg-white/10 border border-white/30 rounded-full hover:bg-white/20 hover:border-white/50 hover:gap-5 transition-all duration-300 overflow-hidden"
+                      className="group relative inline-flex items-center gap-3 px-6 py-3 text-white text-sm md:text-base font-medium backdrop-blur-md bg-black/10 border border-black/30 rounded-full hover:bg-black/20 hover:border-black/50 hover:gap-5 transition-all duration-300 overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <span className="link_text_wrap relative overflow-hidden">
