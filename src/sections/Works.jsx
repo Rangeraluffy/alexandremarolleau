@@ -19,7 +19,7 @@ const Works = () => {
       stack: 'HTML, SCSS, JavaScript, C# .NET',
       image: '/assets/stay-courchevel.png',
       imageBlur: '/assets/stay-courchevel.png',
-      link: '#',
+      link: 'https://www.staycourchevel.com/',
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ const Works = () => {
       stack: 'HTML, CSS, JavaScript',
       image: '/assets/pairlehypnose.png',
       imageBlur: '/assets/budjeo-mockup.png',
-      link: '#',
+      link: 'https://www.pairle-hypnose.com/',
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ const Works = () => {
       stack: 'HTML, CSS, JavaScript',
       image: '/assets/terasolar.png',
       imageBlur: '/assets/terasolar.png',
-      link: '#',
+      link: 'https://www.terasolar.ch/',
     },
     {
       id: 6,
