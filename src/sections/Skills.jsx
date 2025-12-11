@@ -63,29 +63,29 @@ const Skills = () => {
   }, []);
 
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       ref={sectionRef}
-      className="min-h-screen py-20 bg-gray-100 dark:bg-[#0d1117] transition-colors duration-300"
+      className="min-h-screen py-12 sm:py-16 md:py-20 bg-gray-100 dark:bg-[#0d1117] transition-colors duration-300"
     >
-      <div className="container mx-auto px-6">
-        <h2 className="text-5xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
+      <div className="container mx-auto px-4 sm:px-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 text-gray-900 dark:text-white transition-colors duration-300">
           {t('skills.title')}
         </h2>
-        <div className="w-24 h-1 bg-blue-600 mx-auto mb-16"></div>
+        <div className="w-20 sm:w-24 h-1 bg-blue-600 mx-auto mb-8 sm:mb-12 md:mb-16"></div>
 
         {/* Grille de compétences */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16">
           {skillsData.map((category, index) => (
             <div
               key={category.nameKey}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-white dark:bg-[#0d1117] rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300"
+              className="bg-white dark:bg-[#0d1117] rounded-xl p-5 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300"
             >
-              <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white transition-colors duration-300">
                 {t(category.nameKey)}
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {category.skills.map((skill) => (
                   <div key={skill.name}>
                     <div className="flex justify-between mb-2">

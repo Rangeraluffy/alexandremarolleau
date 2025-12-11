@@ -187,19 +187,19 @@ const Works = () => {
               }}
             >
               {/* Layout Grid */}
-              <div className="work_layout flex-1 w-full h-full grid grid-cols-12 gap-6 items-end">
-                
+              <div className="work_layout flex-1 w-full h-full grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center md:items-end px-4 sm:px-6 md:px-0">
+
                 {/* Colonne 1 : Image (colonnes 3-7) */}
-                <div className="work_column-1 col-span-12 md:col-start-2 md:col-span-5 self-center">
+                <div className="work_column-1 col-span-1 md:col-start-2 md:col-span-5 self-center w-full">
                   <div className="work_visual relative">
                     {/* Image principale */}
                     <div className="work_visual_main">
-                      <div className="relative w-full aspect-[4/3]">
+                      <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
                         <div className="absolute inset-0" />
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                          className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-2xl"
                         />
                       </div>
                     </div>
@@ -207,13 +207,13 @@ const Works = () => {
                 </div>
 
                 {/* Colonne 2 : Contenu texte (colonnes 9-12) */}
-                <div className="work_column-2 col-span-12 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end px-6 md:px-0">
-                  <div className="work_content flex flex-col justify-between items-start w-full gap-2">
+                <div className="work_column-2 col-span-1 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end">
+                  <div className="work_content flex flex-col justify-between items-start w-full gap-3 md:gap-2">
 
                     {/* Titre */}
-                    <div className="work_title_wrap flex flex-col justify-start items-start gap-4 w-full">
+                    <div className="work_title_wrap flex flex-col justify-start items-start gap-2 md:gap-4 w-full">
                       <div className="work_number_wrap flex items-center justify-center">
-                        <div className="text-white text-2xl font-bold backdrop-blur-sm">
+                        <div className="text-white text-lg md:text-2xl font-bold backdrop-blur-sm">
                           [{String(index + 1).padStart(2, '0')}]
                         </div>
                       </div>
@@ -224,15 +224,15 @@ const Works = () => {
                         rel="noopener noreferrer"
                         className="text_link relative overflow-hidden group"
                       >
-                        <div className="link_text text-white text-4xl md:text-6xl lg:text-5xl font-bold leading-none transition-transform group-hover:-translate-y-full">
+                        <div className="link_text text-white text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-none transition-transform group-hover:-translate-y-full">
                           {project.title}
                         </div>
-                        <div className="link_text absolute top-0 left-0 text-white text-4xl md:text-6xl lg:text-5xl font-bold leading-none translate-y-full transition-transform group-hover:translate-y-0">
+                        <div className="link_text absolute top-0 left-0 text-white text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-none translate-y-full transition-transform group-hover:translate-y-0">
                           {project.title}
                         </div>
                       </a>
 
-                      <div className="text-white/90 text-xl md:text-2xl lg:text-2xl font-light">
+                      <div className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-light">
                         {t(`works.projects.${project.translationKey}.category`)}
                       </div>
                     </div>
@@ -253,12 +253,12 @@ const Works = () => {
                     </div>
 
                     {/* Info Cards - Glassmorphism Style */}
-                    <div className="work_info_cards w-full  flex gap-3">
+                    <div className="work_info_cards w-full flex flex-col sm:flex-row gap-2 md:gap-3">
                       {/* Domain Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
-                        <div className="relative z-10 flex items-start gap-3">
-                          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
-                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="relative z-10 flex items-start gap-2 md:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
+                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                             </svg>
                           </div>
@@ -274,11 +274,11 @@ const Works = () => {
                       </div>
 
                       {/* Role Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
-                        <div className="relative z-10 flex items-start gap-3">
-                          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
-                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="relative z-10 flex items-start gap-2 md:gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
+                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           </div>
@@ -295,12 +295,12 @@ const Works = () => {
                     </div>
                     {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
-                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-2xl p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                           <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/30 to-pink-500/30 border border-white/20">
-                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                              <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-orange-500/30 to-pink-500/30 border border-white/20">
+                                <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                               </div>

@@ -162,10 +162,10 @@ const About = () => {
       {/* Première div - Titre "About Me" qui zoom */}
       <div
         ref={titleWrapRef}
-        className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+        className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4"
       >
         <div className="text-center">
-          <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+          <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
             {t('about.title')}
           </h2>
         </div>
@@ -174,13 +174,13 @@ const About = () => {
       {/* Nouvelle section - Texte/Description */}
       <div
         ref={textDescRef}
-        className="absolute inset-0 flex items-center justify-center opacity-0 z-30 pointer-events-none px-6"
+        className="absolute inset-0 flex items-center justify-center opacity-0 z-30 pointer-events-none px-4 sm:px-6"
       >
         <div className="max-w-4xl text-center">
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 md:mb-8 transition-colors duration-300">
             {t('about.subtitle')}
           </h3>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
             {t('about.description')}
           </p>
         </div>
@@ -192,44 +192,73 @@ const About = () => {
         className="absolute inset-0 flex items-center justify-center py-20 opacity-0 overflow-hidden z-20"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
-          {/* Statistiques - 2 colonnes de 50% chacune */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+          {/* Statistiques - 2 colonnes côte à côte */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
             <div
               ref={(el) => (statsRef.current[0] = el)}
-              className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
+              className="bg-gray-100 dark:bg-[#0d1117] p-4 sm:p-6 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
-              <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">5+</h3>
-              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.experience')}</p>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 transition-colors duration-300">5+</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.experience')}</p>
             </div>
             <div
               ref={(el) => (statsRef.current[1] = el)}
-              className="bg-gray-100 dark:bg-[#0d1117] p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
+              className="bg-gray-100 dark:bg-[#0d1117] p-4 sm:p-6 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
-              <h3 className="text-5xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">50+</h3>
-              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.projects')}</p>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 transition-colors duration-300">50+</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.projects')}</p>
             </div>
           </div>
 
-          {/* Highlights Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {highlights.map((item, index) => {
+          {/* Highlights Cards - Layout asymétrique : 1 principale + 2 en dessous */}
+          <div className="max-w-4xl mx-auto">
+            {/* Première card - Pleine largeur */}
+            {highlights.slice(0, 1).map((item, index) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.titleKey}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="bg-gray-100 dark:bg-[#0d1117] p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
+                  className="bg-gray-100 dark:bg-[#0d1117] p-6 sm:p-8 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 opacity-0 mb-4 sm:mb-6"
                 >
-                  <Icon className="text-gray-900 dark:text-white mb-3 transition-colors duration-300" size={32} />
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-lg transition-colors duration-300">
-                    {t(item.titleKey)}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
-                    {t(item.descriptionKey)}
-                  </p>
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="flex-shrink-0">
+                      <Icon className="text-gray-900 dark:text-white transition-colors duration-300" size={40} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-gray-900 dark:text-white mb-2 text-lg sm:text-xl transition-colors duration-300">
+                        {t(item.titleKey)}
+                      </h4>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300 leading-relaxed">
+                        {t(item.descriptionKey)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
+
+            {/* Deux cards en dessous - Côte à côte */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {highlights.slice(1, 3).map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.titleKey}
+                    ref={(el) => (cardsRef.current[index + 1] = el)}
+                    className="bg-gray-100 dark:bg-[#0d1117] p-5 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
+                  >
+                    <Icon className="text-gray-900 dark:text-white mb-3 transition-colors duration-300" size={32} />
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-base sm:text-lg transition-colors duration-300">
+                      {t(item.titleKey)}
+                    </h4>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                      {t(item.descriptionKey)}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
