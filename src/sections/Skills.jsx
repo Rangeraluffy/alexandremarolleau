@@ -111,6 +111,18 @@ const Skills = () => {
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
                 >
+                  <style>
+                    {`
+                      @keyframes dash-flow {
+                        to {
+                          stroke-dashoffset: -24;
+                        }
+                      }
+                      .animated-dash {
+                        animation: dash-flow 2s linear infinite;
+                      }
+                    `}
+                  </style>
                   {category.skills.map((_, idx) => {
                     const angle = (idx * 360) / skillCount - 90;
                     const radian = (angle * Math.PI) / 180;
@@ -129,7 +141,7 @@ const Skills = () => {
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeDasharray="6 6"
-                        className="text-gray-300 dark:text-gray-700 transition-colors duration-300"
+                        className="text-gray-300 dark:text-gray-700 transition-colors duration-300 animated-dash"
                       />
                     );
                   })}
