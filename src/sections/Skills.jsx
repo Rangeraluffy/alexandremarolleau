@@ -91,38 +91,91 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="max-w-7xl mx-auto space-y-8 md:space-y-12 mb-16 md:mb-24">
-          {skillsData.map((category, index) => (
-            <div
-              key={category.nameKey}
-              ref={(el) => (categoriesRef.current[index] = el)}
-              className="group"
-            >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-300">
-                  {category.icon}
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
-                  {t(category.nameKey)}
-                </h3>
-              </div>
+        {/* Skills Mind Map */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 mb-16 md:mb-24">
+          {skillsData.map((category, index) => {
+            const skillCount = category.skills.length;
+            const radius = 180; // Rayon du cercle de disposition
+            const centerSize = 120; // Taille du cercle central
 
-              {/* Skills Tags */}
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, idx) => (
-                  <span
-                    key={idx}
-                    className="group/tag relative px-5 py-2.5 text-sm md:text-base font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 hover:scale-105 transition-all duration-300 cursor-default"
-                  >
-                    <span className="relative z-10">{skill}</span>
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-200/50 dark:from-gray-700/50 to-transparent opacity-0 group-hover/tag:opacity-100 rounded-full transition-opacity duration-300" />
-                  </span>
-                ))}
+            return (
+              <div
+                key={category.nameKey}
+                ref={(el) => (categoriesRef.current[index] = el)}
+                className="relative flex items-center justify-center min-h-[500px]"
+              >
+                {/* SVG pour les lignes en pointillés */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  style={{ zIndex: 0 }}
+                  viewBox="0 0 500 500"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  {category.skills.map((_, idx) => {
+                    const angle = (idx * 360) / skillCount - 90;
+                    const radian = (angle * Math.PI) / 180;
+                    const centerX = 250;
+                    const centerY = 250;
+                    const x2 = centerX + Math.cos(radian) * radius;
+                    const y2 = centerY + Math.sin(radian) * radius;
+
+                    return (
+                      <line
+                        key={idx}
+                        x1={centerX}
+                        y1={centerY}
+                        x2={x2}
+                        y2={y2}
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeDasharray="6 6"
+                        className="text-gray-300 dark:text-gray-700 transition-colors duration-300"
+                      />
+                    );
+                  })}
+                </svg>
+
+                {/* Cercle central */}
+                <div
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border-4 border-gray-300 dark:border-gray-700 flex flex-col items-center justify-center gap-2 shadow-xl transition-all duration-300 group hover:scale-110"
+                  style={{ width: centerSize, height: centerSize, zIndex: 10 }}
+                >
+                  <div className="text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-900 dark:text-white transition-colors duration-300 text-center px-2">
+                    {t(category.nameKey)}
+                  </h3>
+                </div>
+
+                {/* Technologies disposées en cercle */}
+                {category.skills.map((skill, idx) => {
+                  const angle = (idx * 360) / skillCount - 90;
+                  const radian = (angle * Math.PI) / 180;
+                  const x = Math.cos(radian) * radius;
+                  const y = Math.sin(radian) * radius;
+
+                  return (
+                    <div
+                      key={idx}
+                      className="absolute group/skill"
+                      style={{
+                        left: `calc(50% + ${x}px)`,
+                        top: `calc(50% + ${y}px)`,
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 5,
+                      }}
+                    >
+                      <div className="relative px-4 py-2 text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-300 dark:border-gray-700 shadow-lg hover:border-gray-500 dark:hover:border-gray-500 hover:scale-110 transition-all duration-300 cursor-default whitespace-nowrap">
+                        <span className="relative z-10">{skill}</span>
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200/50 dark:from-gray-700/50 to-transparent opacity-0 group-hover/skill:opacity-100 rounded-full transition-opacity duration-300" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* GitHub Contributions */}
