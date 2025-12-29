@@ -195,11 +195,11 @@ const Works = () => {
                   : "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
               }}
             >
-              {/* Layout Grid */}
-              <div className="work_layout flex-1 w-full h-full grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center md:items-end px-4 sm:px-6 md:px-0">
+              {/* Layout Flex */}
+              <div className="work_layout flex-1 w-full h-full flex flex-col md:flex-row items-center gap-8 md:gap-16 px-4 sm:px-6 md:px-8 lg:px-16">
 
-                {/* Colonne 1 : Image (colonnes 2-5) */}
-                <div className="work_column-1 col-span-1 md:col-start-2 md:col-span-4 self-center w-full max-w-md md:max-w-none mx-auto">
+                {/* Colonne 1 : Image */}
+                <div className="work_column-1 w-full md:flex-1 max-w-md md:max-w-none">
                   <div className="work_visual relative">
                     {/* Image principale */}
                     <div className="work_visual_main">
@@ -215,8 +215,8 @@ const Works = () => {
                   </div>
                 </div>
 
-                {/* Colonne 2 : Contenu texte (colonnes 9-12) */}
-                <div className="work_column-2 col-span-1 md:col-start-8 md:col-span-4 flex flex-col justify-center items-stretch h-full self-end">
+                {/* Colonne 2 : Contenu texte */}
+                <div className="work_column-2 w-full md:flex-1 flex flex-col justify-end items-stretch">
                   <div className="work_content flex flex-col justify-between items-start w-full gap-3 md:gap-2">
 
                     {/* Titre */}
