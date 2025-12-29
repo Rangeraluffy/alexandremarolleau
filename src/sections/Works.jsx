@@ -156,14 +156,23 @@ const Works = () => {
             <div className="flex flex-col items-center justify-center h-full">
               <div className="w-screen">
                 <div className="absolute inset-0 w-full h-full">
-                  <div 
-                    className="absolute inset-0 z-[1] backdrop-blur-[40px]"
-                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
-                  />
-                  <img 
-                    src={project.imageBlur} 
-                    alt="" 
+                  <img
+                    src={project.imageBlur}
+                    alt=""
                     className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      filter: 'blur(40px)',
+                      transform: 'translateZ(0)',
+                      willChange: 'transform'
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 z-[1]"
+                    style={{
+                      backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                      transform: 'translateZ(0)',
+                      willChange: 'transform'
+                    }}
                   />
                 </div>
               </div>
@@ -189,12 +198,12 @@ const Works = () => {
               {/* Layout Grid */}
               <div className="work_layout flex-1 w-full h-full grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center md:items-end px-4 sm:px-6 md:px-0">
 
-                {/* Colonne 1 : Image (colonnes 3-7) */}
-                <div className="work_column-1 col-span-1 md:col-start-2 md:col-span-5 self-center w-full">
+                {/* Colonne 1 : Image (colonnes 2-5) */}
+                <div className="work_column-1 col-span-1 md:col-start-2 md:col-span-4 self-center w-full max-w-md md:max-w-none mx-auto">
                   <div className="work_visual relative">
                     {/* Image principale */}
                     <div className="work_visual_main">
-                      <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
+                      <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
                         <div className="absolute inset-0" />
                         <img
                           src={project.image}
@@ -212,7 +221,7 @@ const Works = () => {
 
                     {/* Titre */}
                     <div className="work_title_wrap flex flex-col justify-start items-start gap-2 md:gap-4 w-full">
-                      <div className="work_number_wrap flex items-center justify-center">
+                      <div className="work_number_wrap flex items-center">
                         <div className="text-white text-lg md:text-2xl font-bold backdrop-blur-sm">
                           [{String(index + 1).padStart(2, '0')}]
                         </div>
@@ -252,94 +261,97 @@ const Works = () => {
                       </div>
                     </div>
 
-                    {/* Info Cards - Glassmorphism Style */}
-                    <div className="work_info_cards w-full flex flex-col sm:flex-row gap-2 md:gap-3">
+                    {/* Info Cards - Glassmorphism Style - Toujours côte à côte */}
+                    <div className="work_info_cards w-full grid grid-cols-2 gap-2 md:gap-3">
                       {/* Domain Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
-                        <div className="relative z-10 flex items-start gap-2 md:gap-3">
-                          <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
-                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                            </svg>
-                          </div>
-                          <div className="flex-1">
-                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider mb-1">
+                      <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="relative z-10 flex flex-col gap-2">
+                          <div className="flex items-center gap-2">
+                            <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center rounded-md md:rounded-lg bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/20">
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                              </svg>
+                            </div>
+                            <div className="text-white/60 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider">
                               {t('works.domain')}
                             </div>
-                            <div className="text-white text-sm md:text-base font-semibold">
-                              {t(`works.projects.${project.translationKey}.domain`)}
-                            </div>
+                          </div>
+                          <div className="text-white text-xs sm:text-sm md:text-base font-semibold leading-tight">
+                            {t(`works.projects.${project.translationKey}.domain`)}
                           </div>
                         </div>
                       </div>
 
                       {/* Role Card */}
-                      <div className="flex-1 group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                      <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
-                        <div className="relative z-10 flex items-start gap-2 md:gap-3">
-                          <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
-                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                          </div>
-                          <div className="flex-1">
-                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider mb-1">
+                        <div className="relative z-10 flex flex-col gap-2">
+                          <div className="flex items-center gap-2">
+                            <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center rounded-md md:rounded-lg bg-gradient-to-br from-green-500/30 to-teal-500/30 border border-white/20">
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              </svg>
+                            </div>
+                            <div className="text-white/60 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider">
                               {t('works.role')}
                             </div>
-                            <div className="text-white text-sm md:text-base font-semibold">
-                              {t(`works.projects.${project.translationKey}.role`)}
-                            </div>
+                          </div>
+                          <div className="text-white text-xs sm:text-sm md:text-base font-semibold leading-tight">
+                            {t(`works.projects.${project.translationKey}.role`)}
                           </div>
                         </div>
                       </div>
                     </div>
-                    {/* Features Card */}
+
+                    {/* Features et View Project - Côte à côte */}
+                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                      {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
-                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-xl md:rounded-2xl p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                           <div className="relative z-10">
-                            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                              <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-br from-orange-500/30 to-pink-500/30 border border-white/20">
-                                <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center gap-2 mb-2">
+                              <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center rounded-md md:rounded-lg bg-gradient-to-br from-orange-500/30 to-pink-500/30 border border-white/20">
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                               </div>
-                              <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider">
+                              <div className="text-white/60 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider">
                                 {t('works.features')}
                               </div>
                             </div>
-                            <div className="space-y-2 ml-1">
+                            <div className="flex flex-col gap-1.5 sm:gap-2">
                               {project.techFeatures && project.techFeatures.map((feature, idx) => (
-                                <div key={idx} className="flex items-center gap-2 group/item">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
-                                  <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                <div key={idx} className="flex items-center gap-1.5 sm:gap-2 group/item">
+                                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                                  <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
                                     {t(`works.projects.${project.translationKey}.features.${feature}`)}
                                   </span>
                                 </div>
                               ))}
                               {project.hasCustomFeatures && (
                                 <>
-                                  <div className="flex items-center gap-2 group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                  <div className="flex items-center gap-1.5 sm:gap-2 group/item">
+                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.darkMode`)}
                                     </span>
                                   </div>
-                                  <div className="flex items-center gap-2 group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                  <div className="flex items-center gap-1.5 sm:gap-2 group/item">
+                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.components`)}
                                     </span>
                                   </div>
-                                  <div className="flex items-center gap-2 group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                  <div className="flex items-center gap-1.5 sm:gap-2 group/item">
+                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.performance`)}
                                     </span>
                                   </div>
-                                  <div className="flex items-center gap-2 group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-xs md:text-sm group-hover/item:text-white transition-colors">
+                                  <div className="flex items-center gap-1.5 sm:gap-2 group/item">
+                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.cicd`)}
                                     </span>
                                   </div>
@@ -350,36 +362,39 @@ const Works = () => {
                         </div>
                       )}
 
-                    {/* CTA Button - Enhanced */}
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative inline-flex items-center gap-3 px-6 py-3 text-white text-sm md:text-base font-medium backdrop-blur-md bg-black/10 border border-black/30 rounded-full hover:bg-black/20 hover:border-black/50 hover:gap-5 transition-all duration-300 overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <span className="link_text_wrap relative overflow-hidden">
-                        <span className="link_text block transition-transform group-hover:-translate-y-full">
-                          {t('works.viewProject')}
-                        </span>
-                        <span className="link_text absolute top-0 left-0 translate-y-full transition-transform group-hover:translate-y-0">
-                          {t('works.viewProject')}
-                        </span>
-                      </span>
-                      <svg
-                        className="link_icon w-4 h-4 relative z-10 group-hover:rotate-45 transition-transform duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  </div>
+                      {/* View Project Button */}
+                      <div className="flex items-center justify-start">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group relative inline-flex items-center gap-3 px-6 py-3 text-white text-sm md:text-base font-medium backdrop-blur-md bg-black/10 border border-black/30 rounded-full hover:bg-black/20 hover:border-black/50 hover:gap-5 transition-all duration-300 overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <span className="link_text_wrap relative overflow-hidden">
+                            <span className="link_text block transition-transform group-hover:-translate-y-full">
+                              {t('works.viewProject')}
+                            </span>
+                            <span className="link_text absolute top-0 left-0 translate-y-full transition-transform group-hover:translate-y-0">
+                              {t('works.viewProject')}
+                            </span>
+                          </span>
+                          <svg
+                            className="link_icon w-4 h-4 relative z-10 group-hover:rotate-45 transition-transform duration-300"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                 </div>
               </div>
+            </div>
             </div>
           ))}
         </div>
