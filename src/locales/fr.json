@@ -89,10 +89,12 @@
   },
   "skills": {
     "title": "Compétences & Outils",
+    "subtitle": "Technologies que j'utilise pour donner vie aux idées",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
-      "mobile": "Mobile"
+      "mobile": "Mobile",
+      "tools": "Outils & DevOps"
     }
   },
   "github": {
