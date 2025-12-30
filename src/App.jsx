@@ -5,6 +5,7 @@ import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Works from './sections/Works';
 import Skills from './sections/Skills';
+import GitHub from './sections/GitHub';
 import About from './sections/About';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -94,9 +95,10 @@ function App() {
         </div>
       </section>
 
-      <About /> 
+      <About />
       <Works />
-      <Skills />
+      {/* <Skills /> */}
+      <GitHub />
       <Footer />
     </div>
   );

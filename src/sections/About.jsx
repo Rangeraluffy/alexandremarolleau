@@ -198,7 +198,7 @@ const About = () => {
               ref={(el) => (statsRef.current[0] = el)}
               className="bg-gray-100 dark:bg-[#0d1117] p-4 sm:p-6 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
             >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 transition-colors duration-300">5+</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 transition-colors duration-300">3+</h3>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">{t('about.stats.experience')}</p>
             </div>
             <div

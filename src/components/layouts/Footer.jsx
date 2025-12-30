@@ -46,14 +46,6 @@ const Footer = () => {
                       {t('footer.works')}
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="#skills"
-                      className="text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-                    >
-                      {t('footer.skills')}
-                    </a>
-                  </li>
                 </ul>
               </div>
 

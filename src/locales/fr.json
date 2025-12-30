@@ -2,7 +2,7 @@
   "header": {
     "about": "À PROPOS",
     "works": "PROJETS",
-    "skills": "COMPÉTENCES",
+    "github": "GITHUB",
     "contact": "CONTACT"
   },
   "hero": {
@@ -11,7 +11,7 @@
   "about": {
     "title": "À Propos",
     "subtitle": "Développeur Full Stack Passionné",
-    "description": "Avec plus de 5 ans d'expérience dans le développement web, je crée des expériences numériques modernes et performantes. Spécialisé dans les technologies React, Node.js et les architectures cloud, je transforme vos idées en applications web robustes et scalables.",
+    "description": "Développeur Fullstack avec 3 ans d'expérience dans la conception, le développement et le déploiement d'applications web et mobiles. Expertise en JavaScript, Node.js, React, C#, .NET Framework et Flutter. Expérience avérée dans la création d'API REST, d'interfaces responsives et d'applications mobiles multiplateformes. Solide maîtrise des méthodologies Agile, du contrôle de version (Git/GitLab) et de la gestion de bases de données (MySQL, SQL Server). Maintenance active d'une application mobile en production avec plus de 30 utilisateurs sur iOS et Android.",
     "stats": {
       "experience": "Années d'expérience",
       "projects": "Projets réalisés"
@@ -84,6 +84,18 @@
           "performance": "Performance optimisée (Lighthouse 95+) ⚡",
           "cicd": "CI/CD automatisé 🚀"
         }
+      },
+      "promoglace": {
+        "category": "Site e-commerce sur mesure",
+        "domain": "Sports d'Hiver",
+        "role": "Développeur Full Stack",
+        "description": "Développement complet d'une plateforme e-commerce pour la vente d'équipements de sports d'hiver. Site développé entièrement from scratch avec système de gestion de commandes, catalogue produits dynamique et interface d'administration personnalisée.",
+        "features": {
+          "darkMode": "Système de panier personnalisé 🛒",
+          "components": "Gestion des commandes temps réel 📦",
+          "performance": "Interface d'administration C# .NET 🔧",
+          "cicd": "Catalogue produits dynamique ⛷️"
+        }
       }
     }
   },
@@ -98,6 +110,8 @@
     }
   },
   "github": {
+    "title": "Contributions GitHub",
+    "subtitle": "Mon activité de développement open source et personnel",
     "contributions": "contributions au cours de l'année",
     "viewOnGithub": "Voir sur GitHub",
     "learn": "En savoir plus sur le calcul des contributions",

@@ -104,7 +104,7 @@ const Header = () => {
   const navLinks = [
     { href: '#about', labelKey: 'header.about' },
     { href: '#works', labelKey: 'header.works' },
-    { href: '#skills', labelKey: 'header.skills' },
+    { href: '#github', labelKey: 'header.github' },
   ];
 
   return (

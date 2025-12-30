@@ -68,6 +68,16 @@ const Works = () => {
       link: 'https://alexandremarolleau.com',
       hasCustomFeatures: true,
     },
+    {
+      id: 7,
+      title: 'Promoglace',
+      translationKey: 'promoglace',
+      stack: 'HTML, SCSS, JavaScript, C# .NET',
+      image: '/assets/promoglace.png',
+      imageBlur: '/assets/promoglace.png',
+      link: 'https://www.promoglace.com/',
+      hasCustomFeatures: true,
+    },
   ];
 
   useEffect(() => {

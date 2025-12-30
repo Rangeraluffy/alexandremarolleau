@@ -2,7 +2,7 @@
   "header": {
     "about": "ABOUT",
     "works": "WORKS",
-    "skills": "SKILLS",
+    "github": "GITHUB",
     "contact": "CONTACT"
   },
   "hero": {
@@ -11,7 +11,7 @@
   "about": {
     "title": "About Me",
     "subtitle": "Passionate Full Stack Developer",
-    "description": "With over 5 years of experience in web development, I create modern and performant digital experiences. Specialized in React, Node.js, and cloud architectures, I transform your ideas into robust and scalable web applications.",
+    "description": "Fullstack Developer with 3 years of experience designing, developing, and deploying web and mobile applications. Expertise in JavaScript, Node.js, React, C#, .NET Framework, and Flutter. Proven track record building REST APIs, responsive frontends, and cross-platform mobile apps. Strong background in Agile methodologies, version control (Git/GitLab), and database management (MySQL, SQL Server). Currently maintaining a production mobile application with 30+ active users on iOS and Android.",
     "stats": {
       "experience": "Years of experience",
       "projects": "Projects completed"
@@ -84,6 +84,18 @@
           "performance": "Optimized performance (Lighthouse 95+) ⚡",
           "cicd": "Automated CI/CD 🚀"
         }
+      },
+      "promoglace": {
+        "category": "Custom e-commerce website",
+        "domain": "Winter Sports E-commerce",
+        "role": "Full Stack Developer",
+        "description": "Complete development of an e-commerce platform for selling ice cream products. Fully custom-built site with order management system, dynamic product catalog, and personalized administration interface.",
+        "features": {
+          "darkMode": "Custom shopping cart system 🛒",
+          "components": "Real-time order management 📦",
+          "performance": "C# .NET admin interface 🔧",
+          "cicd": "Dynamic product catalog 🍦"
+        }
       }
     }
   },
@@ -98,6 +110,8 @@
     }
   },
   "github": {
+    "title": "GitHub Contributions",
+    "subtitle": "My open source and personal development activity",
     "contributions": "contributions in the last year",
     "viewOnGithub": "View on GitHub",
     "learn": "Learn how we count contributions",
