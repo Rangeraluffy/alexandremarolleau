@@ -279,10 +279,10 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
       {/* Contribution Graph - Style GitHub */}
       <div className="bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-md p-4">
         {/* Wrapper avec scroll horizontal sur mobile/tablette */}
-        <div className="overflow-x-auto pb-2">
+        <div className="overflow-x-auto lg:overflow-x-visible pb-2">
           <div
             ref={gridRef}
-            className="min-w-max"
+            className="min-w-max lg:min-w-0"
           >
             <div className="flex gap-1">
               {/* Labels des jours de la semaine */}

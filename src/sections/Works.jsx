@@ -206,10 +206,10 @@ const Works = () => {
               }}
             >
               {/* Layout Flex */}
-              <div className="work_layout flex-1 w-full flex flex-col md:flex-row items-center gap-6 md:gap-16 px-4 sm:px-6 md:px-8 lg:px-16">
+              <div className="work_layout flex-1 w-full flex flex-col lg:flex-row items-center gap-6 lg:gap-16 px-4 sm:px-6 md:px-8 lg:px-16">
 
                 {/* Colonne 1 : Image */}
-                <div className="work_column-1 w-full md:flex-1 max-w-md md:max-w-none">
+                <div className="work_column-1 w-full lg:flex-1 max-w-md lg:max-w-none">
                   <div className="work_visual relative">
                     {/* Image principale */}
                     <div className="work_visual_main">
@@ -230,7 +230,7 @@ const Works = () => {
                   <div className="work_content flex flex-col justify-between items-start w-full gap-3 md:gap-2">
 
                     {/* Titre */}
-                    <div className="work_title_wrap flex flex-col justify-start items-start gap-2 md:gap-4 w-full">
+                    <div className="work_title_wrap flex flex-col justify-start items-start gap-2 lg:gap-4 w-full">
                       <div className="work_number_wrap flex items-center">
                         <div className="text-white text-lg md:text-2xl font-bold backdrop-blur-sm">
                           [{String(index + 1).padStart(2, '0')}]
@@ -314,7 +314,7 @@ const Works = () => {
                     </div>
 
                     {/* Features et View Project - Côte à côte */}
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+                    <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-3">
                       {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
                         <div className="hidden md:block group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
@@ -330,7 +330,7 @@ const Works = () => {
                                 {t('works.features')}
                               </div>
                             </div>
-                            <div className="grid grid-cols-2 sm:flex sm:flex-col gap-1.5 sm:gap-2">
+                            <div className="grid grid-cols-2 lg:flex lg:flex-col gap-1.5 sm:gap-2">
                               {project.techFeatures && project.techFeatures.map((feature, idx) => (
                                 <div key={idx} className="flex items-center gap-1.5 sm:gap-2 group/item">
                                   <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
