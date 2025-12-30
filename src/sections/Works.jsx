@@ -198,15 +198,15 @@ const Works = () => {
             <div
               key={`item-${project.id}`}
               ref={(el) => (itemsRef.current[index] = el)}
-              className="work_item absolute inset-0 w-full h-full flex flex-col justify-between items-stretch py-16"
+              className="work_item absolute inset-0 w-full min-h-full flex flex-col justify-between items-stretch pt-24 pb-16 sm:pt-16"
               style={{
-                clipPath: index === 0 
+                clipPath: index === 0
                   ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
                   : "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
               }}
             >
               {/* Layout Flex */}
-              <div className="work_layout flex-1 w-full h-full flex flex-col md:flex-row items-center gap-8 md:gap-16 px-4 sm:px-6 md:px-8 lg:px-16">
+              <div className="work_layout flex-1 w-full flex flex-col md:flex-row items-center gap-6 md:gap-16 px-4 sm:px-6 md:px-8 lg:px-16">
 
                 {/* Colonne 1 : Image */}
                 <div className="work_column-1 w-full md:flex-1 max-w-md md:max-w-none">
@@ -282,11 +282,11 @@ const Works = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                               </svg>
                             </div>
-                            <div className="text-white/60 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider">
+                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider">
                               {t('works.domain')}
                             </div>
                           </div>
-                          <div className="text-white text-xs sm:text-sm md:text-base font-semibold leading-tight">
+                          <div className="text-white text-sm md:text-base font-semibold leading-tight">
                             {t(`works.projects.${project.translationKey}.domain`)}
                           </div>
                         </div>
@@ -302,11 +302,11 @@ const Works = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                               </svg>
                             </div>
-                            <div className="text-white/60 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider">
+                            <div className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-wider">
                               {t('works.role')}
                             </div>
                           </div>
-                          <div className="text-white text-xs sm:text-sm md:text-base font-semibold leading-tight">
+                          <div className="text-white text-sm md:text-base font-semibold leading-tight">
                             {t(`works.projects.${project.translationKey}.role`)}
                           </div>
                         </div>
@@ -317,7 +317,7 @@ const Works = () => {
                     <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                       {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
-                        <div className="group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="hidden sm:block group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                           <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-2">
