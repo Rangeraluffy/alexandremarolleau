@@ -213,7 +213,7 @@ const Works = () => {
                   <div className="work_visual relative">
                     {/* Image principale */}
                     <div className="work_visual_main">
-                      <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
+                      <div className="relative w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/10]">
                         <div className="absolute inset-0" />
                         <img
                           src={project.image}
@@ -330,11 +330,11 @@ const Works = () => {
                                 {t('works.features')}
                               </div>
                             </div>
-                            <div className="flex flex-col gap-1.5 sm:gap-2">
+                            <div className="grid grid-cols-2 sm:flex sm:flex-col gap-1.5 sm:gap-2">
                               {project.techFeatures && project.techFeatures.map((feature, idx) => (
                                 <div key={idx} className="flex items-center gap-1.5 sm:gap-2 group/item">
                                   <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
-                                  <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
+                                  <span className="text-white/80 text-xs sm:text-sm md:text-base group-hover/item:text-white transition-colors leading-tight">
                                     {t(`works.projects.${project.translationKey}.features.${feature}`)}
                                   </span>
                                 </div>
@@ -343,25 +343,25 @@ const Works = () => {
                                 <>
                                   <div className="flex items-center gap-1.5 sm:gap-2 group/item">
                                     <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
+                                    <span className="text-white/80 text-xs sm:text-sm md:text-base group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.darkMode`)}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-1.5 sm:gap-2 group/item">
                                     <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
+                                    <span className="text-white/80 text-xs sm:text-sm md:text-base group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.components`)}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-1.5 sm:gap-2 group/item">
                                     <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
+                                    <span className="text-white/80 text-xs sm:text-sm md:text-base group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.performance`)}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-1.5 sm:gap-2 group/item">
                                     <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
-                                    <span className="text-white/80 text-[10px] sm:text-xs md:text-sm group-hover/item:text-white transition-colors leading-tight">
+                                    <span className="text-white/80 text-xs sm:text-sm md:text-base group-hover/item:text-white transition-colors leading-tight">
                                       {t(`works.projects.${project.translationKey}.features.cicd`)}
                                     </span>
                                   </div>

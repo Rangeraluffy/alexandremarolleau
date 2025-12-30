@@ -217,7 +217,7 @@ const About = () => {
 
           {/* Highlights Cards - Grille 2x2 */}
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {highlights.map((item, index) => {
                 const Icon = item.icon;
                 return (
