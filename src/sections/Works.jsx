@@ -314,10 +314,10 @@ const Works = () => {
                     </div>
 
                     {/* Features et View Project - Côte à côte */}
-                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
                       {/* Features Card */}
                       {((project.techFeatures && project.techFeatures.length > 0) || project.hasCustomFeatures) && (
-                        <div className="hidden sm:block group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
+                        <div className="hidden md:block group relative backdrop-blur-md bg-black/10 border border-black/20 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 hover:bg-black/15 hover:border-black/40 transition-all duration-300 overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
                           <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-2">
