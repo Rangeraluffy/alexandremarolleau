@@ -198,7 +198,7 @@ const About = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
           {/* Statistiques - 2 colonnes côte à côte */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-4 sm:mb-6">
             <div
               ref={(el) => (statsRef.current[0] = el)}
               className="bg-gray-100 dark:bg-[#0d1117] p-4 sm:p-6 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700 text-center opacity-0 transition-colors duration-300"
