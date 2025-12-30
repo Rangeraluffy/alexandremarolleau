@@ -37,11 +37,11 @@ const GitHub = () => {
     <section
       id="github"
       ref={sectionRef}
-      className="min-h-screen py-20 md:py-32 bg-white dark:bg-[#0d1117] transition-colors duration-300"
+      className="md:min-h-screen py-12 md:py-32 bg-white dark:bg-[#0d1117] transition-colors duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
         {/* Header */}
-        <div ref={headerRef} className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+        <div ref={headerRef} className="max-w-4xl mx-auto text-center mb-8 md:mb-24">
           <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
             {t('github.title')}
           </h2>

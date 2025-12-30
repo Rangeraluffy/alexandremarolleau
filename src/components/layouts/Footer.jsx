@@ -11,10 +11,10 @@ const Footer = () => {
         {/* Border top */}
         <div className="border-t border-gray-200 dark:border-gray-700"></div>
 
-        <div className="py-8 sm:py-10 md:py-12">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-6 sm:gap-8">
+        <div className="py-6 sm:py-10 md:py-12">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 sm:gap-8">
             {/* Logo - À gauche */}
-            <div className="flex items-start">
+            <div className="flex items-center md:items-start">
               <img
                 src={theme === 'dark' ? '/assets/logo-am-small-white.svg' : '/assets/logo-am-small.svg'}
                 alt="Alexandre Marolleau"

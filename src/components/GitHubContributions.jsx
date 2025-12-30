@@ -278,24 +278,26 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
 
       {/* Contribution Graph - Style GitHub */}
       <div className="bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-md p-4">
-        <div 
-          ref={gridRef}
-          className="w-full"
-        >
-          <div className="flex gap-1 w-full">
-            {/* Labels des jours de la semaine */}
-            <div className="flex flex-col justify-between pr-2 text-xs text-gray-600 dark:text-gray-400 flex-shrink-0">
-              <span style={{ height: '11px', lineHeight: '11px' }}>Mon</span>
-              <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Wed</span>
-              <span style={{ height: '11px', lineHeight: '11px' }}>Wed</span>
-              <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Fri</span>
-              <span style={{ height: '11px', lineHeight: '11px' }}>Fri</span>
-              <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Sun</span>
-              <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Sun</span>
-            </div>
+        {/* Wrapper avec scroll horizontal sur mobile/tablette */}
+        <div className="overflow-x-auto pb-2">
+          <div
+            ref={gridRef}
+            className="min-w-max"
+          >
+            <div className="flex gap-1">
+              {/* Labels des jours de la semaine */}
+              <div className="hidden sm:flex flex-col justify-between pr-2 text-xs text-gray-600 dark:text-gray-400 flex-shrink-0">
+                <span style={{ height: '11px', lineHeight: '11px' }}>Mon</span>
+                <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Wed</span>
+                <span style={{ height: '11px', lineHeight: '11px' }}>Wed</span>
+                <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Fri</span>
+                <span style={{ height: '11px', lineHeight: '11px' }}>Fri</span>
+                <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Sun</span>
+                <span style={{ height: '11px', lineHeight: '11px' }} className="invisible">Sun</span>
+              </div>
 
-            {/* Grille de contributions */}
-            <div className="flex flex-col flex-1 min-w-0">
+              {/* Grille de contributions */}
+              <div className="flex flex-col flex-1">
               {/* Labels des mois */}
               <div className="flex mb-1 h-4 w-full">
                 {weeks.map((week, weekIndex) => {
@@ -363,6 +365,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         {/* Légende - Style GitHub */}
