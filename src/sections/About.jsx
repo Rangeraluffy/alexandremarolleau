@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { FiCode, FiDatabase, FiServer } from 'react-icons/fi';
+import { FiCode, FiDatabase, FiServer, FiTool } from 'react-icons/fi';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../context/LanguageContext';
@@ -30,6 +30,11 @@ const About = () => {
       icon: FiDatabase,
       titleKey: 'about.highlights.database.title',
       descriptionKey: 'about.highlights.database.description',
+    },
+    {
+      icon: FiTool,
+      titleKey: 'about.highlights.tools.title',
+      descriptionKey: 'about.highlights.tools.description',
     },
   ];
 
@@ -210,42 +215,15 @@ const About = () => {
             </div>
           </div>
 
-          {/* Highlights Cards - Layout asymétrique : 1 principale + 2 en dessous */}
+          {/* Highlights Cards - Grille 2x2 */}
           <div className="max-w-4xl mx-auto">
-            {/* Première card - Pleine largeur */}
-            {highlights.slice(0, 1).map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.titleKey}
-                  ref={(el) => (cardsRef.current[index] = el)}
-                  className="bg-gray-100 dark:bg-[#0d1117] p-6 sm:p-8 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 opacity-0 mb-4 sm:mb-6"
-                >
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <div className="flex-shrink-0">
-                      <Icon className="text-gray-900 dark:text-white transition-colors duration-300" size={40} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-2 text-lg sm:text-xl transition-colors duration-300">
-                        {t(item.titleKey)}
-                      </h4>
-                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300 leading-relaxed">
-                        {t(item.descriptionKey)}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Deux cards en dessous - Côte à côte */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {highlights.slice(1, 3).map((item, index) => {
+              {highlights.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.titleKey}
-                    ref={(el) => (cardsRef.current[index + 1] = el)}
+                    ref={(el) => (cardsRef.current[index] = el)}
                     className="bg-gray-100 dark:bg-[#0d1117] p-5 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0"
                   >
                     <Icon className="text-gray-900 dark:text-white mb-3 transition-colors duration-300" size={32} />

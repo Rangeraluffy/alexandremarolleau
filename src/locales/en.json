@@ -19,15 +19,19 @@
     "highlights": {
       "frontend": {
         "title": "Frontend",
-        "description": "React, Vue, Tailwind CSS"
+        "description": "HTML/SCSS, JavaScript, React/React Native, TypeScript"
       },
       "backend": {
         "title": "Backend",
-        "description": "Node.js, Python, REST APIs"
+        "description": "C#/.aspx, Node.js, Flutter"
       },
       "database": {
         "title": "Database",
-        "description": "MongoDB, PostgreSQL, Redis"
+        "description": "SQL"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Figma, Photoshop, GitLab/Github, AWS"
       }
     }
   },
