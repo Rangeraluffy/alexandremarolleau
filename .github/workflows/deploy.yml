@@ -72,12 +72,8 @@ jobs:
           # Dossier local à uploader (le résultat du build)
           local-dir: ./dist/
 
-          # Dossier distant sur ton serveur (à adapter selon ton hébergeur)
-          # Exemples courants :
-          # - /public_html/
-          # - /www/
-          # - /htdocs/
-          server-dir: /public_html/
+          # Dossier distant sur ton serveur
+          server-dir: /home/debian/dev/alexandreMarolleau/
 
           # Options de déploiement
           dangerous-clean-slate: false  # Ne supprime PAS tout avant d'uploader
