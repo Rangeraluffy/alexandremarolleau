@@ -168,31 +168,6 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
     };
   }, [loading, contributions]);
 
-  const getLevelColor = (level) => {
-    // Couleurs officielles GitHub (mode clair et sombre)
-    const colors = {
-      light: {
-        0: '#ebedf0', // Aucune contribution - gris clair
-        1: '#9be9a8', // 1-3 contributions
-        2: '#40c463', // 4-6 contributions
-        3: '#30a14e', // 7-9 contributions
-        4: '#216e39', // 10+ contributions
-      },
-      dark: {
-        0: '#2d333b', // Aucune contribution - gris foncé (au lieu de noir)
-        1: '#0e4429', // 1-3 contributions
-        2: '#006d32', // 4-6 contributions
-        3: '#26a641', // 7-9 contributions
-        4: '#39d353', // 10+ contributions
-      }
-    };
-    
-    return {
-      light: colors.light[level],
-      dark: colors.dark[level],
-    };
-  };
-
   const getWeeksData = () => {
     const weeks = [];
     const dates = Array.from(contributions.keys()).sort();
@@ -214,25 +189,6 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
     return weeks;
   };
 
-  const getMonthLabels = () => {
-    const months = [];
-    const dates = Array.from(contributions.keys()).sort();
-    let currentMonth = '';
-    let weekIndex = 0;
-
-    dates.forEach((date, index) => {
-      const monthName = new Date(date).toLocaleDateString('en-US', { month: 'short' });
-      
-      if (monthName !== currentMonth && index % 7 === 0) {
-        months.push({ name: monthName, weekIndex });
-        currentMonth = monthName;
-      }
-      
-      if (index % 7 === 0) weekIndex++;
-    });
-
-    return months;
-  };
 
   if (loading) {
     return (
@@ -246,7 +202,6 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
   }
 
   const weeks = getWeeksData();
-  const monthLabels = getMonthLabels();
 
   return (
     <div ref={containerRef} className="w-full">
@@ -326,8 +281,7 @@ const GitHubContributions = ({ username = 'Rangeraluffy' }) => {
                     {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
                       const date = week[dayIndex];
                       const data = date ? contributions.get(date) : null;
-                      const colors = data ? getLevelColor(data.level) : getLevelColor(0);
-                      
+
                       if (!date) {
                         return (
                           <div
