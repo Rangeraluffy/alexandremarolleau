@@ -1,50 +1,87 @@
-name: Deploy to OVH
+# ============================================
+# CI/CD Pipeline - Déploiement Automatique
+# ============================================
+# Ce workflow se déclenche à chaque push sur la branche main
+# Il build le projet et le déploie automatiquement sur ton serveur via FTP
 
+name: Build and Deploy
+
+# Quand est-ce que ce workflow se déclenche ?
 on:
   push:
     branches:
-      - main  # Déploiement automatique sur push vers main
-  workflow_dispatch:  # Permet de lancer manuellement le workflow
+      - main  # À chaque push sur la branche main
+  workflow_dispatch:  # Permet aussi de lancer manuellement depuis GitHub
 
+# Les différentes étapes du workflow
 jobs:
   build-and-deploy:
+    # Le robot utilise Ubuntu (comme un petit ordinateur virtuel)
     runs-on: ubuntu-latest
-    
-    steps:
-      # 1. Checkout du code
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node.js
+    steps:
+      # ============================================
+      # Étape 1 : Récupérer le code
+      # ============================================
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        # Cette action télécharge ton code depuis GitHub
+
+      # ============================================
+      # Étape 2 : Installer Node.js
+      # ============================================
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '20'  # Version de Node.js
+          cache: 'npm'  # Cache les dépendances pour aller plus vite
 
-      # 3. Installation des dépendances
-      - name: Install dependencies
+      # ============================================
+      # Étape 3 : Installer les dépendances
+      # ============================================
+      - name: 📦 Install dependencies
         run: npm ci
+        # npm ci est plus rapide et plus fiable que npm install pour le CI/CD
 
-      # 4. Build de l'application
-      - name: Build application
+      # ============================================
+      # Étape 4 : Vérifier le code (Linting)
+      # ============================================
+      - name: ✅ Run linter
+        run: npm run lint
+        # Vérifie que ton code respecte les standards de qualité
+        # Si le linter trouve des erreurs, le déploiement s'arrête ici !
+
+      # ============================================
+      # Étape 5 : Build du projet
+      # ============================================
+      - name: 🏗️ Build project
         run: npm run build
-        env:
-          NODE_ENV: production
+        # Crée le dossier /dist avec ton site optimisé pour la production
 
-      # 5. Déploiement via FTP
-      - name: Deploy to OVH via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # ============================================
+      # Étape 6 : Déploiement via FTP
+      # ============================================
+      - name: 🚀 Deploy to server via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
+          # Informations de connexion FTP (stockées dans les Secrets GitHub)
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /www/  # À adapter selon ton hébergement OVH
-          dangerous-clean-slate: false  # Ne supprime pas les fichiers existants non présents dans dist/
 
-      # 6. Notification de succès (optionnel)
-      - name: Deployment successful
-        run: |
-          echo "✅ Déploiement réussi sur OVH!"
-          echo "🌐 Site accessible sur: https://ton-domaine.com"
+          # Dossier local à uploader (le résultat du build)
+          local-dir: ./dist/
+
+          # Dossier distant sur ton serveur (à adapter selon ton hébergeur)
+          # Exemples courants :
+          # - /public_html/
+          # - /www/
+          # - /htdocs/
+          server-dir: /public_html/
+
+          # Options de déploiement
+          dangerous-clean-slate: false  # Ne supprime PAS tout avant d'uploader
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
