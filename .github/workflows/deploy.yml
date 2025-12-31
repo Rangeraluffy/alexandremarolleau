@@ -2,7 +2,7 @@
 # CI/CD Pipeline - Déploiement Automatique
 # ============================================
 # Ce workflow se déclenche à chaque push sur la branche main
-# Il build le projet et le déploie automatiquement sur ton serveur via FTP
+# Il build le projet et le déploie automatiquement sur ton serveur via SFTP (SSH)
 
 name: Build and Deploy
 
@@ -59,25 +59,23 @@ jobs:
         # Crée le dossier /dist avec ton site optimisé pour la production
 
       # ============================================
-      # Étape 6 : Déploiement via FTP
+      # Étape 6 : Déploiement via SFTP (SSH)
       # ============================================
-      - name: 🚀 Deploy to server via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: 🚀 Deploy to server via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          # Informations de connexion FTP (stockées dans les Secrets GitHub)
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          # Informations de connexion SFTP (stockées dans les Secrets GitHub)
+          server: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22  # Port SSH par défaut
 
           # Dossier local à uploader (le résultat du build)
-          local-dir: ./dist/
+          local_path: './dist/*'
 
           # Dossier distant sur ton serveur
-          server-dir: /home/debian/dev/alexandreMarolleau/
+          remote_path: '/home/debian/dev/alexandreMarolleau'
 
           # Options de déploiement
-          dangerous-clean-slate: false  # Ne supprime PAS tout avant d'uploader
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+          sftp_only: true  # Utilise uniquement SFTP (pas de commandes SSH supplémentaires)
+          delete_remote_files: false  # Ne supprime PAS les fichiers distants
